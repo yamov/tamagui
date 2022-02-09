@@ -35,7 +35,7 @@
     "sourceMap": false,
     "strictNullChecks": true,
     "target": "es2020",
-    "types": ["node", "react"],
+    "types": ["node", "react/next", "react-dom/next"],
     "lib": ["dom", "esnext"],
   },
   "exclude": ["test/**/*"],
