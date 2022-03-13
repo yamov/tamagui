@@ -1,4 +1,4 @@
-import { Heart, Pause } from '@tamagui/feather-icons'
+import { FastForward, Heart, Pause, Rewind } from '@tamagui/feather-icons'
 import React, { useState } from 'react'
 import { useLayoutEffect } from 'react'
 import { Button, Card, Image, Paragraph, Square, Theme, ThemeName, XStack, YStack } from 'tamagui'
@@ -18,7 +18,6 @@ export const Sandbox = () => {
       <YStack>
         <XStack>
           <Theme name="dark">
-            <MediaPlayer alt={0} />
             <MediaPlayer alt={1} />
             <MediaPlayer alt={3} />
             <MediaPlayer alt={4} />
@@ -27,7 +26,6 @@ export const Sandbox = () => {
         </XStack>
         <XStack>
           <Theme name="light">
-            <MediaPlayer alt={0} />
             <MediaPlayer alt={1} />
             <MediaPlayer alt={3} />
             <MediaPlayer alt={4} />
@@ -47,7 +45,7 @@ export const MediaPlayer = ({ alt }: { alt: number }) => {
   // <Scale.Container> for non-viewport usage
 
   return (
-    <YStack bc="$bg2">
+    <YStack bc="$background">
       <YStack py="$5" px="$2">
         <Scale
           // could be `container` as well
@@ -81,10 +79,10 @@ export const MediaPlayer = ({ alt }: { alt: number }) => {
               <Theme name={barTheme}>
                 <XStack
                   borderTopWidth={1}
-                  borderTopColor="$bg2"
+                  borderTopColor="$borderColor"
                   w="100%"
                   px="$8"
-                  bc="$bg"
+                  bc="$background"
                   bbrr="$2"
                   bblr="$2"
                   ai="center"
@@ -92,16 +90,16 @@ export const MediaPlayer = ({ alt }: { alt: number }) => {
                   space="$8"
                   jc="center"
                 >
-                  <Heart />
+                  <Rewind />
                   <Button
                     // animation="spring"
                     theme={mainButtonTheme}
                     bordered
-                    // bc="$bg"
-                    // hoverStyle={{
-                    //   bc: '$bg2',
-                    //   scale: 1.1,
-                    // }}
+                    // bc="$background"
+                    hoverStyle={{
+                      elevation: '$6',
+                      scale: 1.1,
+                    }}
                     my="$-6"
                     icon={Pause}
                     scaleIcon={2}
@@ -109,7 +107,7 @@ export const MediaPlayer = ({ alt }: { alt: number }) => {
                     size="$8"
                     elevation="$4"
                   />
-                  <Heart />
+                  <FastForward />
                 </XStack>
               </Theme>
             </YStack>

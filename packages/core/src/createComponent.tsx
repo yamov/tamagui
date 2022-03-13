@@ -221,7 +221,7 @@ export function createComponent<ComponentPropTypes extends Object = DefaultProps
     const ViewComponent = isText ? ReactText : ReactView
 
     // styles
-    const isHovering = !isTouchDevice && !disabled && pseudos && state.hover
+    const isHovering = !disabled && !isTouchDevice && pseudos && state.hover
     const isPressing = !disabled && pseudos && state.press
     const isFocusing = !disabled && pseudos && state.focus
 
@@ -454,7 +454,6 @@ export function createComponent<ComponentPropTypes extends Object = DefaultProps
           ...(viewProps.dataSet || {}),
           cn: className,
         }
-        console.log('set', className, viewProps.dataSet, viewProps)
       } else {
         // we already handle Text/View properly
         if (className) {
@@ -476,7 +475,7 @@ export function createComponent<ComponentPropTypes extends Object = DefaultProps
       if (props['debug']) {
         viewProps['debug'] = true
         console.log('» props in:', props)
-        console.log('» props out:', viewProps.dataSet, {
+        console.log('» props out:', {
           ...viewProps,
           classNameSplit: viewProps.className?.split(' '),
         })

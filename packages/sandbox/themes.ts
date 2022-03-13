@@ -45,8 +45,8 @@ const getTheme =
     const bgBase = isLight ? whiteColors : blackColors
     const colorBase = isLight ? blackColors : whiteColors
     return {
-      background: bgBase[0 + str],
-      backgroundHover: bgBase[1 + str],
+      background: bgBase[str],
+      backgroundHover: bgBase[str - 1],
       backgroundPress: bgBase[2 + str],
       backgroundFocus: bgBase[3 + str],
       backgroundTransparent: tokens.color.grayA1,
@@ -80,7 +80,6 @@ const light = {
 
 export const themes = {
   dark,
-  'dark-alt0': getDarkTheme(0),
   'dark-alt1': getDarkTheme(1),
   'dark-alt2': getDarkTheme(2),
   'dark-alt3': getDarkTheme(3),
@@ -88,7 +87,6 @@ export const themes = {
   'dark-alt5': getDarkTheme(5),
   'dark-alt6': getDarkTheme(6),
   light,
-  'light-alt0': getLightTheme(0),
   'light-alt1': getLightTheme(1),
   'light-alt2': getLightTheme(2),
   'light-alt3': getLightTheme(3),

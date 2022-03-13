@@ -42,10 +42,8 @@ export const getSplitStyles = (
 
     let isMedia = keyInit[0] === '$'
     let isPseudo = validStylesPseudo[keyInit]
-    const out =
-      isMedia || isPseudo
-        ? [[keyInit, valInit]]
-        : staticConfig.propMapper(keyInit, valInit, theme, props)
+
+    const out = isMedia || isPseudo ? true : staticConfig.propMapper(keyInit, valInit, theme, props)
     const expanded = out === true || !out ? [[keyInit, valInit]] : Object.entries(out)
 
     for (const [key, val] of expanded) {
@@ -188,7 +186,6 @@ const getSubStyle = (
     const out = staticConfig.propMapper(key, val, theme, props)
     const expanded = out === true || !out ? [[key, val]] : Object.entries(out)
     for (const [skey, sval] of expanded) {
-      // const sval = valueMap(valInit)
       if (skey in stylePropsTransform) {
         mergeTransform(styleOut, skey, sval)
       } else {

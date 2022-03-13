@@ -35,18 +35,22 @@ type GenericThemes = {
     // defined for our tamagui kit , we could do this inside `tamagui`
     // but maybe helpful to have some sort of universally shared things +
     // + enforce if they want their own, redefine in their design sys
-    bg: string | Variable
-    bg2: string | Variable
-    bg3: string | Variable
-    bg4: string | Variable
+    background: string | Variable
+    backgroundHover: string | Variable
+    backgroundPress: string | Variable
+    backgroundFocus: string | Variable
     color: string | Variable
-    color2: string | Variable
-    color3: string | Variable
-    color4: string | Variable
+    colorHover: string | Variable
+    colorPress: string | Variable
+    colorFocus: string | Variable
     borderColor: string | Variable
-    borderColor2: string | Variable
+    borderColorHover: string | Variable
+    borderColorPress: string | Variable
+    borderColorFocus: string | Variable
     shadowColor: string | Variable
-    shadowColor2: string | Variable
+    shadowColorHover: string | Variable
+    shadowColorPress: string | Variable
+    shadowColorFocus: string | Variable
   }
 }
 type GenericShorthands = {}

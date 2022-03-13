@@ -28,18 +28,22 @@ export interface CreateTokens<Val extends number | string | Variable = number | 
 declare type GenericTokens = CreateTokens;
 declare type GenericThemes = {
     [key: string]: {
-        bg: string | Variable;
-        bg2: string | Variable;
-        bg3: string | Variable;
-        bg4: string | Variable;
+        background: string | Variable;
+        backgroundHover: string | Variable;
+        backgroundPress: string | Variable;
+        backgroundFocus: string | Variable;
         color: string | Variable;
-        color2: string | Variable;
-        color3: string | Variable;
-        color4: string | Variable;
+        colorHover: string | Variable;
+        colorPress: string | Variable;
+        colorFocus: string | Variable;
         borderColor: string | Variable;
-        borderColor2: string | Variable;
+        borderColorHover: string | Variable;
+        borderColorPress: string | Variable;
+        borderColorFocus: string | Variable;
         shadowColor: string | Variable;
-        shadowColor2: string | Variable;
+        shadowColorHover: string | Variable;
+        shadowColorPress: string | Variable;
+        shadowColorFocus: string | Variable;
     };
 };
 declare type GenericShorthands = {};
