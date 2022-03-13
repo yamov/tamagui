@@ -15,7 +15,7 @@ const Scale = ({ between, ...props }: any) => {
 export const Sandbox = () => {
   return (
     <Tamagui.Provider injectCSS>
-      <YStack space>
+      <YStack>
         <XStack>
           <Theme name="dark">
             <MediaPlayer subTheme={0} />
@@ -49,7 +49,7 @@ export const MediaPlayer = ({ subTheme }: { subTheme: number }) => {
 
   return (
     <YStack bc="$bg2">
-      <YStack p="$4">
+      <YStack py="$5" px="$2">
         <Scale
           // could be `container` as well
           // is container="viewport" default?
@@ -82,7 +82,7 @@ export const MediaPlayer = ({ subTheme }: { subTheme: number }) => {
               <Theme name={barTheme}>
                 <XStack
                   borderTopWidth={1}
-                  borderTopColor="$borderColor"
+                  borderTopColor="$bg2"
                   w="100%"
                   px="$8"
                   bc="$bg"
@@ -95,20 +95,20 @@ export const MediaPlayer = ({ subTheme }: { subTheme: number }) => {
                 >
                   <Heart />
                   <Button
-                    theme={mainButtonTheme}
-                    bc="$bg"
                     // animation="spring"
-                    bw={1}
+                    theme={mainButtonTheme}
+                    bordered
+                    // bc="$bg"
+                    // hoverStyle={{
+                    //   bc: '$bg2',
+                    //   scale: 1.1,
+                    // }}
                     my="$-6"
                     icon={Pause}
                     scaleIcon={2}
                     circular
                     size="$8"
                     elevation="$4"
-                    hoverStyle={{
-                      bc: '$bg2',
-                      scale: 1.1,
-                    }}
                   />
                   <Heart />
                 </XStack>
