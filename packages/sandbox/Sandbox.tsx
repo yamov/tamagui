@@ -18,20 +18,20 @@ export const Sandbox = () => {
       <YStack>
         <XStack>
           <Theme name="dark">
-            <MediaPlayer subTheme={0} />
-            <MediaPlayer subTheme={1} />
-            <MediaPlayer subTheme={3} />
-            <MediaPlayer subTheme={4} />
-            <MediaPlayer subTheme={5} />
+            <MediaPlayer alt={0} />
+            <MediaPlayer alt={1} />
+            <MediaPlayer alt={3} />
+            <MediaPlayer alt={4} />
+            <MediaPlayer alt={5} />
           </Theme>
         </XStack>
         <XStack>
           <Theme name="light">
-            <MediaPlayer subTheme={0} />
-            <MediaPlayer subTheme={1} />
-            <MediaPlayer subTheme={3} />
-            <MediaPlayer subTheme={4} />
-            <MediaPlayer subTheme={5} />
+            <MediaPlayer alt={0} />
+            <MediaPlayer alt={1} />
+            <MediaPlayer alt={3} />
+            <MediaPlayer alt={4} />
+            <MediaPlayer alt={5} />
           </Theme>
         </XStack>
       </YStack>
@@ -39,10 +39,9 @@ export const Sandbox = () => {
   )
 }
 
-export const MediaPlayer = ({ subTheme }: { subTheme: number }) => {
-  const str = subTheme
-  const mainButtonTheme = `alt${str}`
-  const barTheme = `alt${str + 1}`
+export const MediaPlayer = ({ alt }: { alt: number }) => {
+  const mainButtonTheme = `alt${alt}`
+  const barTheme = `alt${alt + 1}`
 
   // alternatively have
   // <Scale.Container> for non-viewport usage

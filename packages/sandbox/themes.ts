@@ -25,7 +25,6 @@ const whiteColors = [
   tokens.color.gray9,
   tokens.color.gray10,
   tokens.color.gray11,
-  // '#111',
   tokens.color.gray12,
   '#222',
   '#010101',
@@ -46,20 +45,23 @@ const getTheme =
     const bgBase = isLight ? whiteColors : blackColors
     const colorBase = isLight ? blackColors : whiteColors
     return {
-      bg: bgBase[0 + str],
-      bg2: bgBase[1 + str],
-      bg3: bgBase[2 + str],
-      bg4: bgBase[3 + str],
-      bgTransparent: tokens.color.grayA1,
+      background: bgBase[0 + str],
+      backgroundHover: bgBase[1 + str],
+      backgroundPress: bgBase[2 + str],
+      backgroundFocus: bgBase[3 + str],
+      backgroundTransparent: tokens.color.grayA1,
       borderColor: isLight ? colorBase[7] : bgBase[2],
-      borderColor2: isLight ? colorBase[8] : bgBase[3],
+      borderColorHover: isLight ? colorBase[8] : bgBase[3],
+      borderColorPress: isLight ? colorBase[8] : bgBase[3],
+      borderColorFocus: isLight ? colorBase[8] : bgBase[3],
       color: colorBase[0 + str],
-      color2: colorBase[1 + str],
-      color3: colorBase[2 + str],
-      color4: colorBase[3 + str],
+      colorHover: colorBase[1 + str],
+      colorPress: colorBase[2 + str],
+      colorFocus: colorBase[3 + str],
       shadowColor: blackColors[!isLight ? 0 : 7],
-      shadowColor2: blackColors[!isLight ? 1 : 8],
-      separatorColor: bgBase[4],
+      shadowColorHover: blackColors[!isLight ? 1 : 8],
+      shadowColorPress: blackColors[!isLight ? 1 : 8],
+      shadowColorFocus: blackColors[!isLight ? 1 : 8],
     }
   }
 

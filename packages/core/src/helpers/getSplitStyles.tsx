@@ -9,7 +9,7 @@ import { ViewStyle } from 'react-native'
 
 import { isWeb } from '../constants/platform'
 import { mediaQueryConfig, mediaState } from '../hooks/useMedia'
-import { StaticConfigParsed, ThemeObject } from '../types'
+import { StackProps, StaticConfigParsed, ThemeObject } from '../types'
 import { createMediaStyle } from './createMediaStyle'
 import { fixNativeShadow } from './fixNativeShadow'
 import { getStylesAtomic } from './getStylesAtomic'
@@ -17,7 +17,11 @@ import { insertStyleRule } from './insertStyleRule'
 
 export type SplitStyles = ReturnType<typeof getSplitStyles>
 
-// TODO run over this, should be able to cut it down quite a bit
+type PseudoStyles = {
+  hoverStyle?: ViewStyle
+  pressStyle?: ViewStyle
+  focusStyle?: ViewStyle
+}
 
 export const getSplitStyles = (
   props: { [key: string]: any },
@@ -25,10 +29,10 @@ export const getSplitStyles = (
   theme: ThemeObject
 ) => {
   const validStyleProps = staticConfig.isText ? stylePropsText : validStyles
-  const viewProps: Record<string, any> = {}
+  const viewProps: StackProps = {}
   const style: any[] = []
 
-  let pseudos: { hoverStyle?: ViewStyle; pressStyle?: ViewStyle } | null = null
+  let pseudos: PseudoStyles | null = null
   let cur: ViewStyle | null = null
   let classNames: string[] | null = null
 
