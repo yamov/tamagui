@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import {
   Button,
   H2,
+  H3,
   InteractiveContainer,
   Paragraph,
   SizableText,
@@ -24,54 +25,15 @@ export function HeroExample() {
   return (
     // <Theme name="pink">
     <ContainerLarge position="relative">
-      <YStack
-        position="absolute"
-        zIndex={-1}
-        pointerEvents="none"
-        opacity={0.1}
-        top="0"
-        right="-20%"
-        width="80vw"
-        height="80vw"
-        scale={2}
-        maxHeight={820}
-        maxWidth={820}
-      >
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            background: `radial-gradient(circle closest-side, var(--pink4), transparent)`,
-          }}
-        />
-      </YStack>
-
-      <YStack
-        position="absolute"
-        zIndex={0}
-        pointerEvents="none"
-        opacity={0.15}
-        top="10vh"
-        left="-20%"
-        width="80vw"
-        height="80vw"
-        scale={3}
-        maxHeight={720}
-        maxWidth={720}
-      >
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            background: `radial-gradient(circle closest-side, var(--blue5), transparent)`,
-          }}
-        />
-      </YStack>
-
-      <YStack zi={1} space="$6">
-        <H2 als="center">
-          Beautiful syntax, <span className="rainbow">faster output</span>
-        </H2>
+      <YStack zi={1} space="$5">
+        <YStack space="$2">
+          <H2 als="center">
+            Feels <span className="rainbow">native</span> everywhere
+          </H2>
+          <H3 theme="alt2" als="center" fow="400">
+            Unlock next level performance with an optimizing compiler.
+          </H3>
+        </YStack>
 
         <InteractiveContainer als="center">
           {examples.map((example, i) => {
@@ -88,9 +50,9 @@ export function HeroExample() {
           })}
         </InteractiveContainer>
 
-        <XStack jc="space-between">
+        <XStack mt="$2" jc="space-between">
           <YStack flex={1} maxWidth="49%" space="$4">
-            <Paragraph size="$3" minHeight={50} ta="center" px="$7" theme="alt1">
+            <Paragraph theme="alt2" minHeight={50} ta="center" px="$7">
               {activeExample.input.description}
             </Paragraph>
 
@@ -98,17 +60,15 @@ export function HeroExample() {
             <YStack>
               {activeExample.input.examples.map((example, i) => (
                 <React.Fragment key={example.code}>
-                  <Theme name="pink">
-                    <HoverableStack>
-                      <CodeDemo
-                        language={example.language as any}
-                        mode="interactive"
-                        line="3-20"
-                        maxHeight={500}
-                        value={example.code}
-                      />
-                    </HoverableStack>
-                  </Theme>
+                  <HoverableStack>
+                    <CodeDemo
+                      language={example.language as any}
+                      mode="interactive"
+                      line="3-20"
+                      maxHeight={500}
+                      value={example.code}
+                    />
+                  </HoverableStack>
                   {i < activeExample.input.examples.length - 1 && (
                     <YStack als="center" my="$-4" zIndex={1000}>
                       <IconStack theme="blue" mb={0}>
@@ -126,7 +86,7 @@ export function HeroExample() {
             </IconStack>
           </YStack>
           <YStack flex={1} maxWidth="49%" space="$4">
-            <Paragraph size="$3" minHeight={50} ta="center" px="$7" theme="alt1">
+            <Paragraph theme="alt2" minHeight={50} ta="center" px="$7">
               {activeExample.output.description}
             </Paragraph>
             <Pill theme="blue">Output</Pill>
@@ -136,15 +96,13 @@ export function HeroExample() {
                 return (
                   <React.Fragment key={`${activeIndex}${i}`}>
                     <HoverableStack>
-                      <Theme name="pink">
-                        <CodeDemo
-                          language={example.language as any}
-                          mode="interactive"
-                          line="3-20"
-                          maxHeight={500}
-                          value={example.code}
-                        />
-                      </Theme>
+                      <CodeDemo
+                        language={example.language as any}
+                        mode="interactive"
+                        line="3-20"
+                        maxHeight={500}
+                        value={example.code}
+                      />
                     </HoverableStack>
                     {hasMore && (
                       <YStack als="center" my="$-4" zIndex={1000}>
