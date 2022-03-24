@@ -10,7 +10,7 @@
 import { ArrowRight, Check, Compass, Copy, Cpu, Layers } from '@tamagui/feather-icons'
 import copy from 'copy-to-clipboard'
 import NextLink from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Button,
   H3,
@@ -34,6 +34,15 @@ import { IconStack } from './IconStack'
 export function Hero() {
   const [hasCopied, setHasCopied] = React.useState(false)
 
+  useEffect(() => {
+    if (hasCopied) {
+      const tm = setTimeout(() => {
+        setHasCopied(false)
+      }, 2_000)
+      return () => clearTimeout(tm)
+    }
+  }, [hasCopied])
+
   return (
     <>
       <Theme name="blue">
@@ -47,7 +56,7 @@ export function Hero() {
                   maxWidth: 550,
                   mx: 'auto',
                 }}
-                space="$7"
+                space="$8"
               >
                 <YStack ai="flex-start" $gtSm={{ ai: 'center' }} space="$5">
                   <Title
@@ -97,14 +106,15 @@ export function Hero() {
                         fontWeight: '400',
                       }}
                     >
-                      Write-once native/web interfaces with an optimizing compiler.
-                      Everything&nbsp;you&nbsp;need to work faster and run faster, everywhere.
+                      Write-once native&nbsp;+&nbsp;web UIs with a smart, optimizing compiler.
+                      <br />
+                      Ship faster. Perform better. Run everywhere.
                     </Paragraph>
                   </YStack>
                 </YStack>
 
                 {/* <Theme name="purple"> */}
-                <XStack ai="center" jc="center" space="$4">
+                <XStack ai="center" jc="center" space="$2">
                   <NextLink href="/docs/intro/introduction" passHref>
                     <Button
                       // TODO check why hoverStyle not overriding
@@ -121,7 +131,13 @@ export function Hero() {
                   </NextLink>
 
                   <NextLink href="https://github.com/tamagui/tamagui" passHref>
-                    <YStack opacity={0.65} hoverStyle={{ opacity: 1 }} tag="a" target="_blank">
+                    <YStack
+                      p="$2"
+                      opacity={0.65}
+                      hoverStyle={{ opacity: 1 }}
+                      tag="a"
+                      target="_blank"
+                    >
                       <VisuallyHidden>
                         <Text>Github</Text>
                       </VisuallyHidden>
@@ -135,6 +151,7 @@ export function Hero() {
                     // css={{ mr: '$5', '@bp2': { mr: '$7' } }}
                   >
                     <YStack
+                      p="$2"
                       $sm={{ height: 0, width: 0, overflow: 'hidden', mx: -18 }}
                       opacity={0.65}
                       hoverStyle={{ opacity: 1 }}
@@ -153,7 +170,7 @@ export function Hero() {
 
               <XStack
                 borderWidth={1}
-                borderColor="$borderColorHover"
+                borderColor="$borderColor"
                 px="$5"
                 height={48}
                 ai="center"
@@ -164,7 +181,7 @@ export function Hero() {
                   bc: '$backgroundHover',
                 }}
               >
-                <Paragraph size="$5" fontWeight="500" fontFamily="$mono">
+                <Paragraph size="$7" fontWeight="500" fontFamily="$mono">
                   npm install tamagui
                 </Paragraph>
                 <YStack width={60} />

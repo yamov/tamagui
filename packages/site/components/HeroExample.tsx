@@ -28,10 +28,10 @@ export function HeroExample() {
       <YStack zi={1} space="$5">
         <YStack space="$2">
           <H2 als="center">
-            Feels <span className="rainbow">native</span> everywhere
+            Less work, feels native <span className="rainbow">everywhere</span>
           </H2>
           <H3 theme="alt2" als="center" fow="400">
-            Unlock next level performance with an optimizing compiler.
+            Next level performance meets easer to write code.
           </H3>
         </YStack>
 
@@ -127,10 +127,10 @@ const HoverableStack = (props) => <YStack opacity={0.85} hoverStyle={{ opacity: 
 
 const examples = [
   {
-    name: 'Styles',
+    name: 'Inline',
     input: {
       description:
-        'Your own design system with media queries, themes, inline styles and variants all fully typed.',
+        'Write styles naturally, without having to name everything. Use your own typed theme values.',
       examples: [
         {
           language: 'jsx',
@@ -169,7 +169,8 @@ export default createTamagui({
     },
 
     output: {
-      description: 'Compile-time optimized to atomic CSS, flattened components into div / span.',
+      description:
+        'The compiler optimizes inline styles to atomic CSS and flattens trees to HTML tags extra speed.',
       outputs: [
         {
           code: `const _cn2 = " _boxSizing-deolkf _color-1gcmrwd _display-1471scf _fontFamily-187pbxx _fontSize-mmgcxm _wordWrap-qvutc0"

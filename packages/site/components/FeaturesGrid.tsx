@@ -4,7 +4,7 @@ import { Grid, H2, H4, Paragraph, YStack } from 'tamagui'
 export function FeaturesGrid() {
   return (
     <YStack maxWidth={790} mx="auto" space="$3">
-      <H2 ta="center">All-in-one</H2>
+      <H2 ta="center">Everything you need</H2>
 
       <YStack pt="$6">
         <Grid gap={25} itemMinWidth={250}>
@@ -41,7 +41,7 @@ export function FeaturesGrid() {
           </YStack>
 
           <YStack ai="flex-start" space p="$4">
-            <H4 fontFamily="$body">Ergonomic</H4>
+            <H4 fontFamily="$body">DX</H4>
             <Paragraph theme="alt2">
               Inline styles that don't affect render performance, no more naming styles. Let the
               compiler optimize it for you.
@@ -49,7 +49,7 @@ export function FeaturesGrid() {
           </YStack>
 
           <YStack ai="flex-start" space p="$4">
-            <H4 fontFamily="$body">Compatible</H4>
+            <H4 fontFamily="$body">Compatibility</H4>
             <Paragraph theme="alt2">
               Everything you need included on all platforms from themes to responsive design and
               more. Augments react-native-web.
