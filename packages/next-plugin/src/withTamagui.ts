@@ -24,8 +24,8 @@ export const withTamagui = (tamaguiOptions: TamaguiOptions) => {
 
         webpackConfig.resolve.alias = {
           ...(webpackConfig.resolve.alias || {}),
-          // 'react/jsx-runtime.js': jsxRuntime,
-          // 'react/jsx-runtime': jsxRuntime,
+          'react/jsx-runtime.js': jsxRuntime,
+          'react/jsx-runtime': jsxRuntime,
           'react/jsx-dev-runtime.js': jsxDevRuntime,
           'react/jsx-dev-runtime': jsxDevRuntime,
           'react-native$': rnw,
