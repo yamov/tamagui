@@ -157,12 +157,8 @@ export const useChangeThemeEffect = (
       }
       return parentManager.onChangeTheme(() => {
         const next = parentManager.getNextTheme({ name, componentName, themes }, debug)
-        if (process.env.NODE_ENV === 'development' && debug) {
-          console.log('changing theme', name, componentName, next)
-        }
         if (!next) return
         if (themeManager.update({ ...next, parentManager })) {
-          console.log('force updating')
           forceUpdate()
         }
       })
