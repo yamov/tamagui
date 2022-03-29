@@ -1,6 +1,7 @@
 import { useForceUpdate } from '@tamagui/use-force-update'
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
+import { getHasConfigured, getTamagui } from '../conf'
 import { THEME_CLASSNAME_PREFIX, THEME_NAME_SEPARATOR } from '../constants/constants'
 import { useIsomorphicLayoutEffect } from '../constants/platform'
 import { isVariable } from '../createVariable'
@@ -9,8 +10,6 @@ import { ThemeContext } from '../ThemeContext'
 import { ThemeManager, ThemeManagerContext, emptyManager } from '../ThemeManager'
 import { ThemeObject, Themes } from '../types'
 import { useConstant } from './useConstant'
-
-const SEP = THEME_NAME_SEPARATOR
 
 type UseThemeState = {
   uuid: Object
@@ -52,9 +51,9 @@ export const useTheme = (
   return useMemo(() => {
     if (!theme) {
       if (process.env.NODE_ENV === 'development') {
-        console.warn('No theme', { themeName, theme })
+        console.warn('No theme', { themeName, theme, componentName, className })
       }
-      return theme as any
+      return themes[getTamagui().defaultTheme || 'light' || Object.keys(themes)[0]]
     }
     return new Proxy(theme, {
       get(_, key) {
