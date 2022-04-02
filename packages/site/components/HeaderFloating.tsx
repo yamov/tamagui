@@ -5,7 +5,7 @@ import { Theme, XStack } from 'tamagui'
 import { ContainerLarge } from '../components/Container'
 import { Header } from '../components/Header'
 
-export const HeaderFloating = () => {
+export const HeaderFloating = (props: any) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   if (typeof document !== 'undefined') {
@@ -36,7 +36,7 @@ export const HeaderFloating = () => {
       elevation="$2"
     >
       <ContainerLarge>
-        <Header floating />
+        <Header floating {...props} />
       </ContainerLarge>
     </XStack>
   )
