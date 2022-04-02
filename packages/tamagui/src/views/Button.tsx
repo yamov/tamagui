@@ -41,6 +41,16 @@ const ButtonFrame = styled(SizableStack, {
   pressable: true,
 
   variants: {
+    active: {
+      true: {
+        // avoids hover styles when active
+        // TODO not working?
+        hoverStyle: {
+          backgroundColor: '$background',
+        },
+      },
+    },
+
     circular: {
       true: (_, { props, tokens }) => {
         const sizeVal = props['size'] ?? '$4'

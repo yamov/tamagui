@@ -1,6 +1,6 @@
 import { Play } from '@tamagui/feather-icons'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import {
   Button,
@@ -65,17 +65,64 @@ const animationDescriptions = [
   },
 ] as const
 
+let hasScrolledOnce = false
+
 export function HeroExampleAnimations() {
   const [animationI, setAnimationI] = useState(0)
-  const [positionI, setPositionI] = useState(0)
+  const [positionI, setPositionI] = useState(2)
   const position = positions[positionI]
   const animation = animationDescriptions[animationI]
   const { tint } = useTint()
-  const next = () => {
-    setPositionI((x) => (x + 1) % positions.length)
+  const next = (to = 1) => {
+    setPositionI((x) => (x + to) % positions.length)
   }
+  const container = useRef(null)
 
   const settings = Object.entries(animation.settings)
+
+  useEffect(() => {
+    const node = container.current
+    if (!node) return
+    // only when carousel is fully in viewport
+    let dispose: Function | null = null
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') {
+        next()
+      }
+      if (e.key === 'ArrowLeft') {
+        next(-1)
+      }
+    }
+
+    const io = new IntersectionObserver(
+      ([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          if (!hasScrolledOnce) {
+            // scroll to middle on first intersection
+            hasScrolledOnce = true
+            next()
+          }
+          window.addEventListener('keydown', onKey)
+          dispose = () => {
+            window.removeEventListener('keydown', onKey)
+          }
+        } else {
+          dispose?.()
+        }
+      },
+      {
+        threshold: 1,
+      }
+    )
+
+    io.observe(node)
+
+    return () => {
+      dispose?.()
+      io.disconnect()
+    }
+  }, [container.current])
 
   return (
     <YStack>
@@ -100,6 +147,7 @@ export function HeroExampleAnimations() {
         >
           <Theme name={tint}>
             <YStack
+              ref={container}
               pos="relative"
               className="hero-gradient"
               ai="center"
@@ -113,7 +161,7 @@ export function HeroExampleAnimations() {
                 size={110}
                 bc="$color"
                 br="$9"
-                onPress={next}
+                onPress={() => next()}
                 {...position}
               >
                 <ThemeReset>
@@ -128,7 +176,7 @@ export function HeroExampleAnimations() {
                 iconAfter={Play}
                 theme={tint}
                 size="$6"
-                onPress={next}
+                onPress={() => next()}
               />
             </YStack>
           </Theme>

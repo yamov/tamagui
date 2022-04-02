@@ -108,7 +108,6 @@ export function HeroExampleThemes() {
       console.log('done')
       setScrollLock(null)
     }, 200)
-    console.log('add listener')
     node.addEventListener('scroll', listener)
     return () => {
       node.removeEventListener('scroll', listener)

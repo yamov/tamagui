@@ -56,8 +56,9 @@ export function HeroExampleCode() {
             <YStack flex={1} maxWidth="50%" $sm={{ maxWidth: '100%' }} px="$2" space="$6">
               <Paragraph minHeight={50} ta="center" px="$7">
                 <CodeInline size="$4">Input</CodeInline>
-                &nbsp;－&nbsp;
-                {activeExample.input.description}
+                <span style={{ opacity: 0.65 }}>
+                  &nbsp;－&nbsp;{activeExample.input.description}
+                </span>
               </Paragraph>
 
               <CodeExamples {...activeExample.input} />
@@ -70,8 +71,9 @@ export function HeroExampleCode() {
             <YStack flex={1} maxWidth="50%" $sm={{ maxWidth: '100%', mt: '$6' }} px="$2" space="$6">
               <Paragraph minHeight={50} ta="center" px="$7">
                 <CodeInline size="$4">Output</CodeInline>
-                &nbsp;－&nbsp;
-                {activeExample.output.description}
+                <span style={{ opacity: 0.65 }}>
+                  &nbsp;－&nbsp;{activeExample.output.description}
+                </span>
               </Paragraph>
               <CodeExamples {...activeExample.output} />
             </YStack>
@@ -88,7 +90,7 @@ const CodeExamples = memo(({ examples }: any) => {
 
   return (
     <YStack overflow="hidden" flex={1}>
-      <ThemeReset>
+      <>
         <InteractiveContainer zi={10} mb={-30} als="center">
           {examples.map((example, i) => (
             <Button
@@ -97,13 +99,16 @@ const CodeExamples = memo(({ examples }: any) => {
               size="$3"
               key={i}
               borderRadius="$0"
-              fontWeight={i === activeIndex ? '700' : '400'}
+              // fontWeight={i === activeIndex ? '700' : '400'}
+              {...(i === activeIndex && {
+                active: true,
+              })}
             >
               {example.name}
             </Button>
           ))}
         </InteractiveContainer>
-      </ThemeReset>
+      </>
       <XStack maxWidth="100%" flex={1}>
         <YStack flex={1} maxWidth="100%" opacity={0.9} hoverStyle={{ opacity: 1 }}>
           <CodeDemo
