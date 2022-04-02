@@ -2,8 +2,10 @@ import { Community } from '@components/Community'
 import { FeaturesGrid } from '@components/FeaturesGrid'
 import { Hero } from '@components/Hero'
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags'
+import { useMemo } from 'react'
 import { Theme, ThemeReset, XStack, YStack } from 'tamagui'
 
+import { useTint } from '../components/ColorToggleButton'
 import { ContainerLarge } from '../components/Container'
 import { HeaderFloating } from '../components/HeaderFloating'
 import { HeroExampleAnimations } from '../components/HeroExampleAnimations'
@@ -26,7 +28,7 @@ export default function Home() {
         <YStack space="$8">
           <Hero />
           <ContainerLarge>
-            <XStack my="$3" ai="center">
+            <XStack mt="$3" ai="center">
               <PageSeparator />
               <ThemeTint>
                 <InstallInput />
@@ -34,32 +36,42 @@ export default function Home() {
               <PageSeparator />
             </XStack>
           </ContainerLarge>
-          {/* <PageSeparator /> */}
-          <Theme name="alt2">
-            <YStack bc="$background">
-              <ThemeReset>
-                <HeroExampleThemes />
-              </ThemeReset>
-            </YStack>
-          </Theme>
-          <PageSeparator />
+
+          <TintedYStack>
+            <HeroExampleThemes />
+          </TintedYStack>
+
           <HeroResponsive />
           <PageSeparator />
           <HeroExampleCode />
-          <PageSeparator />
-          <HeroPerformance />
-          <PageSeparator />
+          <TintedYStack>
+            <HeroPerformance />
+          </TintedYStack>
           <HeroExampleAnimations />
           <PageSeparator />
           <HeroTypography />
-          <PageSeparator />
-          <HeroExampleProps />
-          <PageSeparator />
+
+          <TintedYStack>
+            <HeroExampleProps />
+          </TintedYStack>
+
           <FeaturesGrid />
-          <PageSeparator />
-          <Community />
+
+          <TintedYStack>
+            <Community />
+          </TintedYStack>
         </YStack>
       </YStack>
     </>
+  )
+}
+
+const TintedYStack = ({ children, ...props }: any) => {
+  const { tint } = useTint()
+  const childrenMemo = useMemo(() => children, [children])
+  return (
+    <YStack py="$8" my="$4" bc={`$${tint}1`} btw={1} bbw={1} boc={`$${tint}4`} {...props}>
+      {childrenMemo}
+    </YStack>
   )
 }
