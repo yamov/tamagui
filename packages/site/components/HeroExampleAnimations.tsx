@@ -99,9 +99,11 @@ export function HeroExampleAnimations() {
       ([{ isIntersecting }]) => {
         if (isIntersecting) {
           if (!hasScrolledOnce) {
-            // scroll to middle on first intersection
             hasScrolledOnce = true
-            next()
+            // dont rush
+            setTimeout(() => {
+              next()
+            }, 400)
           }
           window.addEventListener('keydown', onKey)
           dispose = () => {

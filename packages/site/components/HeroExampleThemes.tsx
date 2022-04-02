@@ -136,10 +136,13 @@ export function HeroExampleThemes() {
           if (!hasScrolledOnce) {
             // scroll to middle on first intersection
             hasScrolledOnce = true
-            const index = themeCombos.indexOf('')
-            moveToIndex(index)
-            setScrollLock('shouldAnimate')
-            scrollToIndex(index, true)
+            // dont rush
+            setTimeout(() => {
+              const index = themeCombos.indexOf('')
+              moveToIndex(index)
+              setScrollLock('shouldAnimate')
+              scrollToIndex(index, true)
+            }, 400)
           }
           window.addEventListener('keydown', onKey)
           dispose = () => {
