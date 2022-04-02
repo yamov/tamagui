@@ -3,7 +3,22 @@ import { FeaturesGrid } from '@components/FeaturesGrid'
 import { Hero } from '@components/Hero'
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags'
 import Link from 'next/link'
-import { Button, H2, H3, Image, Paragraph, Text, XStack, YStack, debounce } from 'tamagui'
+import {
+  Button,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Image,
+  Paragraph,
+  Separator,
+  Text,
+  XStack,
+  YStack,
+  debounce,
+} from 'tamagui'
 
 import { BenchmarkChart } from '../components/BenchmarkChart'
 import { ContainerLarge } from '../components/Container'
@@ -45,6 +60,8 @@ export default function Home() {
           <PageSeparator />
           <Performance />
           <PageSeparator />
+          <HeroExampleFonts />
+          <PageSeparator />
           <FeaturesItems />
           <PageSeparator />
           <FeaturesGrid />
@@ -53,6 +70,51 @@ export default function Home() {
         </YStack>
       </YStack>
     </>
+  )
+}
+
+const HeroExampleFonts = () => {
+  return (
+    <ContainerLarge position="relative">
+      <YStack ai="center" space="$2">
+        <HomeH2>Typography</HomeH2>
+      </YStack>
+
+      <XStack p="$6" space $sm={{ flexDirection: 'column' }}>
+        <YStack
+          jc="center"
+          ai="flex-end"
+          p="$6"
+          mw="50%"
+          $sm={{ mw: '100%' }}
+          f={2}
+          als="center"
+          space
+        >
+          <H1>Hot-swappable</H1>
+          <H2 opacity={1}>individually-styled</H2>
+          <H3 opacity={0.8}>typed and optimized</H3>
+          <H4 opacity={0.6}>premade or custom</H4>
+          <H5 opacity={0.4}>easy to author</H5>
+          <H6 opacity={0.2}>font themes</H6>
+        </YStack>
+        <Separator vertical />
+        <YStack jc="center" p="$6" space="$6" mw="50%" $sm={{ mw: '100%' }}>
+          <Paragraph ta="left" fontSize="$8" lineHeight="$8" theme="alt1">
+            Font themes that understand the needs of vertical rythym.
+          </Paragraph>
+
+          <Paragraph ta="left" fontSize="$6" lineHeight="$6" theme="alt2">
+            Tamagui font tokens are designed to overcome limitations of existing design systems.
+          </Paragraph>
+
+          <Paragraph ta="left" fontSize="$4" lineHeight="$4" theme="alt2">
+            Control each font individually for every prop from font-size to letter-spacing -
+            specifically at every size.
+          </Paragraph>
+        </YStack>
+      </XStack>
+    </ContainerLarge>
   )
 }
 

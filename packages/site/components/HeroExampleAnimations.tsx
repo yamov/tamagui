@@ -175,6 +175,7 @@ export function HeroExampleAnimations() {
                 pos="absolute"
                 bottom={20}
                 right={20}
+                circular
                 iconAfter={Play}
                 theme={tint}
                 size="$6"
