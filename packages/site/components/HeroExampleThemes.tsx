@@ -343,10 +343,10 @@ const Bottom = memo(() => {
 
   return (
     <ContainerLarge space="$3" position="relative">
-      <YStack mt="$3" ai="center" als="center" maxWidth={480} space="$2">
+      <YStack ai="center" als="center" maxWidth={480} space="$2">
         <Link href="/docs/intro/themes" passHref>
           <Button theme={tint} tag="a">
-            Learn how themes work &raquo;
+            How themes work &raquo;
           </Button>
         </Link>
       </YStack>

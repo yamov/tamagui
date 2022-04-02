@@ -93,6 +93,8 @@ export function HeroExampleAnimations() {
           ov="hidden"
           bc="$background"
           h={320}
+          mw={880}
+          als="center"
           x={0}
         >
           <Theme name={tint}>
@@ -129,6 +131,7 @@ export function HeroExampleAnimations() {
               />
             </YStack>
           </Theme>
+
           <Separator vertical />
 
           <YStack $sm={{ display: 'none' }} width="40%">
