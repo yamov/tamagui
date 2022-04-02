@@ -1,6 +1,6 @@
 import { useTheme } from '@components/NextTheme'
 import Link from 'next/link'
-import { SetStateAction, memo, useEffect, useMemo, useRef, useState } from 'react'
+import { SetStateAction, memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import {
   Button,
@@ -34,6 +34,8 @@ for (let i = 0; i < themes[0].length; i++) {
   }
 }
 
+console.log('themeCombos', themeCombos)
+
 const flatToSplit = (i: number) => {
   const colorI = Math.floor(i / 4)
   const shadeI = i % 4
@@ -43,6 +45,8 @@ const flatToSplit = (i: number) => {
 const splitToFlat = ([a, b]: number[]) => {
   return a * 4 + b
 }
+
+let hasScrolledOnce = false
 
 export function HeroExampleThemes() {
   const { setTheme, theme: userTheme } = useTheme()
@@ -72,47 +76,32 @@ export function HeroExampleThemes() {
     })
   }
 
+  const moveToIndex = (index: number) => {
+    updateActiveI(flatToSplit(index))
+  }
+
   const width = 180
   const scale = 0.6
 
+  function scrollToIndex(index: number, force = false) {
+    const node = scrollView.current
+    const lock = getLock()
+    const isReadyToAnimate = lock === 'shouldAnimate'
+    const isForced = force && (isReadyToAnimate || lock === null)
+    const shouldPrevent = !isReadyToAnimate && !isForced
+    if (!node || shouldPrevent) return
+    const left = (width + 30) * index + width / 2 + 30
+    if (node.scrollLeft === left) return
+    node.scrollTo({ left, top: 0, behavior: 'smooth' })
+  }
+
   useEffect(() => {
     if (scrollLock !== 'shouldAnimate') return
-    const node = scrollView.current
-    console.log('node', node)
-    if (!node) return
-    const x = (width + 30) * nextIndex + width / 2 + 30
-    if (node.scrollLeft === x) return
-    setScrollLock('animate')
-    // @ts-ignore
-    node.scrollTo({ left: x, top: 0, behavior: 'smooth' })
-  }, [nextIndex, scrollLock])
-
-  // const onScroll = useMemo(
-  //   () =>
-  //     throttle(
-  //       ({ percent }) => {
-  //         if (getLock() !== null) return
-  //         const node = scrollView.current
-  //         if (!node) return
-  //         const x = 20 * percent
-  //         // @ts-ignore
-  //         node.scrollTo(0, x, false)
-  //       },
-  //       10,
-  //       {
-  //         leading: true,
-  //       }
-  //     ),
-  //   []
-  // )
-
-  // useScrollPosition({
-  //   ref: scrollView,
-  //   onScroll,
-  // })
+    scrollToIndex(nextIndex)
+  }, [nextIndex, scrollLock, scrollView.current])
 
   // scroll lock unset
-  useEffect(() => {
+  useLayoutEffect(() => {
     const node = scrollView.current
     if (!node) return
     const listener = debounce(() => {
@@ -143,6 +132,14 @@ export function HeroExampleThemes() {
     const io = new IntersectionObserver(
       ([{ isIntersecting }]) => {
         if (isIntersecting) {
+          if (!hasScrolledOnce) {
+            // scroll to middle on first intersection
+            hasScrolledOnce = true
+            const index = themeCombos.indexOf('')
+            moveToIndex(index)
+            setScrollLock('shouldAnimate')
+            scrollToIndex(index, true)
+          }
           window.addEventListener('keydown', onKey)
           dispose = () => {
             window.removeEventListener('keydown', onKey)
@@ -351,3 +348,27 @@ const Bottom = memo(() => {
     </ContainerLarge>
   )
 })
+
+// const onScroll = useMemo(
+//   () =>
+//     throttle(
+//       ({ percent }) => {
+//         if (getLock() !== null) return
+//         const node = scrollView.current
+//         if (!node) return
+//         const x = 20 * percent
+//         // @ts-ignore
+//         node.scrollTo(0, x, false)
+//       },
+//       10,
+//       {
+//         leading: true,
+//       }
+//     ),
+//   []
+// )
+
+// useScrollPosition({
+//   ref: scrollView,
+//   onScroll,
+// })
