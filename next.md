@@ -1,3 +1,5 @@
+- // TODO check why hoverStyle not overriding
+
 - make sure @tamagui/core doesn't require theme keys exactly
 
 - styled() fix types with react native web

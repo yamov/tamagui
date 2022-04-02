@@ -16,6 +16,7 @@ import { HeroExampleCode } from '../components/HeroExampleCode'
 import { HeroExampleThemes } from '../components/HeroExampleThemes'
 import { InstallInput } from '../components/InstallInput'
 import { PageSeparator } from '../components/PageSeparator'
+import { ThemeTint } from '../components/ThemeTint'
 
 export default function Home() {
   // return <HeroExampleAnimations />
@@ -27,7 +28,15 @@ export default function Home() {
       <YStack>
         <YStack space="$8">
           <Hero />
-          <InstallInput />
+          <ContainerLarge>
+            <XStack my="$3" ai="center">
+              <PageSeparator />
+              <ThemeTint>
+                <InstallInput />
+              </ThemeTint>
+              <PageSeparator />
+            </XStack>
+          </ContainerLarge>
           {/* <PageSeparator /> */}
           <HeroExampleThemes />
           <PageSeparator />
