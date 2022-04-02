@@ -12,6 +12,7 @@ import { HeroExampleFonts } from '../components/HeroExampleFonts'
 import { HeroExampleProps } from '../components/HeroExampleProps'
 import { HeroExampleThemes } from '../components/HeroExampleThemes'
 import { HeroPerformance } from '../components/HeroPerformance'
+import { HeroResponsive } from '../components/HeroResponsive'
 import { InstallInput } from '../components/InstallInput'
 import { PageSeparator } from '../components/PageSeparator'
 import { ThemeTint } from '../components/ThemeTint'
@@ -41,6 +42,8 @@ export default function Home() {
           <HeroExampleCode />
           <PageSeparator />
           <HeroPerformance />
+          <PageSeparator />
+          <HeroResponsive />
           <PageSeparator />
           <HeroExampleFonts />
           <PageSeparator />

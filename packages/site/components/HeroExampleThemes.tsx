@@ -208,7 +208,7 @@ export function HeroExampleThemes() {
   const titleElements = useMemo(() => {
     return (
       <ContainerLarge space="$3" position="relative">
-        <YStack zi={1} space="$2">
+        <YStack zi={1} space="$1">
           <HomeH2>Truly flexible themes</HomeH2>
           <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
         </YStack>

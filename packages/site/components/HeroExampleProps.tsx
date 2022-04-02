@@ -17,7 +17,7 @@ export const HeroExampleProps = () => {
   return (
     <ContainerLarge position="relative">
       <YStack ai="center" space="$2">
-        <HomeH2>More props</HomeH2>
+        <HomeH2>Hover, Press, Focus</HomeH2>
         <HomeH3>Time-saving props on every view</HomeH3>
       </YStack>
 
