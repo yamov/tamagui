@@ -7,6 +7,7 @@ import {
   H2,
   H3,
   InteractiveContainer,
+  Square,
   Theme,
   ThemeName,
   XStack,
@@ -169,12 +170,12 @@ export function HeroExampleThemes() {
 
   const scrollContents = useMemo(() => {
     return themeCombos.map((name, i) => {
-      const isCurActive = curIndex === i
-      const isNextActive = nextIndex === i
+      // const isCurActive = curIndex === i
+      // const isNextActive = nextIndex === i
       // const isActive = isMidTransition ? isNextActive : isCurActive
       // const isBeforeActive = i < curIndex
-      const [colorI, shadeI] = flatToSplit(i)
       // const isActiveGroup = colorI === curColorI
+      const [colorI, shadeI] = flatToSplit(i)
       const [color, alt] = name.split('_')
       return (
         <XStack key={i} width={width}>
@@ -283,18 +284,16 @@ export function HeroExampleThemes() {
           pos="relative"
           pointerEvents={scrollLock === 'animate' ? 'none' : 'auto'}
         >
-          <ScrollView
-            style={{ width: '100%', overflow: 'hidden' }}
-            horizontal
-            showsHorizontalScrollIndicator={false}
+          <XStack
+            // @ts-ignore
+            style={{ width: '100%', overflow: 'hidden', overflowX: 'auto' }}
             // @ts-ignore
             ref={scrollView}
-            scrollEventThrottle={16}
-            onScroll={(e) => {
+            onScroll={(e: any) => {
               if (scrollLock === 'animate' || scrollLock === 'shouldAnimate') {
                 return
               }
-              const scrollX = Math.max(0, e.nativeEvent.contentOffset.x)
+              const scrollX = Math.max(0, e.target.scrollLeft)
               const itemI = Math.min(Math.floor(scrollX / (width + 30)), themeCombos.length - 1)
               const [n1, n2] = flatToSplit(itemI)
               const [c1, c2] = activeI
@@ -307,8 +306,6 @@ export function HeroExampleThemes() {
             <XStack
               ai="center"
               jc="center"
-              // x={offsetX}
-              // className="transition-test"
               space="$6"
               pos="relative"
               px={`calc(50vw + 30px)`}
@@ -316,7 +313,7 @@ export function HeroExampleThemes() {
             >
               {scrollContents}
             </XStack>
-          </ScrollView>
+          </XStack>
 
           <YStack pe="none" fullscreen ai="center" jc="center" $sm={{ scale: 0.85 }}>
             <Theme name={colorName}>

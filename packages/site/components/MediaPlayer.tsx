@@ -77,7 +77,7 @@ export const MediaPlayer = memo(
                     ai="center"
                     space="$7"
                     jc="center"
-                    pointerEvents={pointerEventsControls}
+                    pointerEvents={pointerEvents}
                   >
                     <Rewind />
                     <Button
@@ -95,6 +95,7 @@ export const MediaPlayer = memo(
                       circular
                       size="$8"
                       elevation="$4"
+                      pointerEvents={pointerEventsControls}
                     />
                     <FastForward />
                   </XStack>

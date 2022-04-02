@@ -1,3 +1,5 @@
+- ScrollView isnt SSR compat
+
 - // TODO check why hoverStyle not overriding
 
 - make sure @tamagui/core doesn't require theme keys exactly
