@@ -82,6 +82,10 @@ export const useTheme = (
           activeTheme = theme
         }
         if (typeof key === 'string') {
+          // auto convert variables to plain
+          if (key[0] === '$') {
+            key = key.slice(1)
+          }
           if (key in activeTheme) {
             if (state.current.isRendering) {
               state.current.keys.add(key)

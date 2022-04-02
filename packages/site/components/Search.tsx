@@ -147,6 +147,7 @@ export const SearchButton = (props: ButtonProps) => {
       borderRadius={1000}
       icon={SearchIcon}
       elevation="$1"
+      color="$colorTranslucent"
       hoverStyle={{
         elevation: '$4',
       }}

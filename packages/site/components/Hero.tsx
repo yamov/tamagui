@@ -90,7 +90,7 @@ const HeroTop = memo(() => {
               <Tooltip contents="Works the same on iOS, Android, and web">
                 <span className="rainbow clip-text help">Universal</span>
               </Tooltip>{' '}
-              React design systems made faster on native & web
+              React design systems made faster on native&nbsp;&&nbsp;web
             </Title>
 
             <YStack
