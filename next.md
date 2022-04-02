@@ -1,3 +1,5 @@
+- // TODO media queries on styled()
+
 - ScrollView isnt SSR compat
 
 - // TODO check why hoverStyle not overriding

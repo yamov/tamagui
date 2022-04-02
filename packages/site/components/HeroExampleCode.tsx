@@ -17,6 +17,7 @@ import { CodeInline } from './Code'
 import { CodeDemo } from './CodeDemo'
 import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
+import { HomeH2, HomeH3 } from './HomeH2'
 import { IconStack } from './IconStack'
 
 export function HeroExampleCode() {
@@ -28,10 +29,8 @@ export function HeroExampleCode() {
     <ContainerLarge position="relative">
       <YStack zi={1} space="$5">
         <YStack space="$2">
-          <H2 als="center">Next-generation compiler</H2>
-          <H3 ta="center" theme="alt2" als="center" fow="400">
-            Faster runtime 🤝 less code 🤝 more platforms
-          </H3>
+          <HomeH2>Next-generation compiler</HomeH2>
+          <HomeH3>Faster runtime 🤝 less code 🤝 more platforms</HomeH3>
         </YStack>
 
         <InteractiveContainer maxWidth="100%" als="center">

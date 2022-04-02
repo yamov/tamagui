@@ -4,8 +4,6 @@ import { SetStateAction, memo, useEffect, useMemo, useRef, useState } from 'reac
 import { ScrollView } from 'react-native'
 import {
   Button,
-  H2,
-  H3,
   InteractiveContainer,
   Square,
   Theme,
@@ -20,6 +18,7 @@ import { useGet } from '../hooks/useGet'
 import { ActiveCircle } from './ActiveCircle'
 import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
+import { HomeH2, HomeH3 } from './HomeH2'
 import { MediaPlayer } from './MediaPlayer'
 
 const themes: (ThemeName | null)[][] = [
@@ -79,12 +78,13 @@ export function HeroExampleThemes() {
   useEffect(() => {
     if (scrollLock !== 'shouldAnimate') return
     const node = scrollView.current
+    console.log('node', node)
     if (!node) return
     const x = (width + 30) * nextIndex + width / 2 + 30
     if (node.scrollLeft === x) return
     setScrollLock('animate')
     // @ts-ignore
-    node.scrollTo({ x, y: 0 })
+    node.scrollTo({ left: x, top: 0, behavior: 'smooth' })
   }, [nextIndex, scrollLock])
 
   // const onScroll = useMemo(
@@ -211,10 +211,8 @@ export function HeroExampleThemes() {
     return (
       <ContainerLarge space="$3" position="relative">
         <YStack zi={1} space="$2">
-          <H2 als="center">Truly flexible themes</H2>
-          <H3 ta="center" theme="alt2" als="center" fow="400">
-            Unlimited sub-themes, down to the component
-          </H3>
+          <HomeH2>Truly flexible themes</HomeH2>
+          <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
         </YStack>
       </ContainerLarge>
     )
@@ -224,7 +222,7 @@ export function HeroExampleThemes() {
     <YStack>
       {titleElements}
 
-      <YStack mt="$3" ai="center" jc="center" space="$6">
+      <YStack mt="$3" ai="center" jc="center" space="$2">
         <ScrollView style={{ maxWidth: '100%' }} horizontal showsHorizontalScrollIndicator={false}>
           <XStack px="$4" space="$4">
             <InteractiveContainer p="$1" br="$10" als="center" space="$1">
