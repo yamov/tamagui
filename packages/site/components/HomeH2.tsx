@@ -16,6 +16,7 @@ export const HomeH3 = styled(H3, {
   theme: 'alt2',
   als: 'center',
   fow: '400',
+  size: '$7',
 
   // TODO media queries on styled()
   $sm: {

@@ -6,6 +6,7 @@ import {
   Button,
   H2,
   H3,
+  H4,
   Paragraph,
   Separator,
   Square,
@@ -16,6 +17,7 @@ import {
 } from 'tamagui'
 
 import { animations } from '../constants/animations'
+import { Card } from './Card'
 import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
 import { HomeH2, HomeH3 } from './HomeH2'
@@ -91,7 +93,7 @@ export function HeroExampleAnimations() {
           br="$6"
           ov="hidden"
           bc="$background"
-          h={320}
+          h={305}
           mw={880}
           als="center"
           x={0}
@@ -184,6 +186,54 @@ export function HeroExampleAnimations() {
               })}
             </XStack>
           </YStack>
+        </XStack>
+
+        <XStack space="$4" $sm={{ flexDirection: 'column' }}>
+          <Card
+            width="33.33%"
+            $sm={{ width: 'auto' }}
+            space
+            tag="a"
+            rel="noopener noreferrer"
+            p="$4"
+          >
+            <H4 cursor="pointer" fontFamily="$body">
+              CSS
+            </H4>
+            <Paragraph cursor="pointer" theme="alt2">
+              Generates clean CSS transitions.
+            </Paragraph>
+          </Card>
+          <Card
+            width="33.33%"
+            $sm={{ width: 'auto' }}
+            space
+            tag="a"
+            rel="noopener noreferrer"
+            p="$4"
+          >
+            <H4 cursor="pointer" fontFamily="$body">
+              Reanimated
+            </H4>
+            <Paragraph cursor="pointer" theme="alt2">
+              Generates clean CSS transitions.
+            </Paragraph>
+          </Card>
+          <Card
+            width="33.33%"
+            $sm={{ width: 'auto' }}
+            space
+            tag="a"
+            rel="noopener noreferrer"
+            p="$4"
+          >
+            <H4 cursor="pointer" fontFamily="$body">
+              Motion
+            </H4>
+            <Paragraph cursor="pointer" theme="alt2">
+              Generates clean CSS transitions.
+            </Paragraph>
+          </Card>
         </XStack>
 
         <Link href="/docs/core/animations" passHref>

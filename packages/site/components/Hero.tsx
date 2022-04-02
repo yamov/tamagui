@@ -122,8 +122,8 @@ const HeroTop = memo(() => {
                   fontWeight: '400',
                 }}
               >
-                Fast apps built faster thanks to an optimizing compiler.
-                Write&nbsp;better,&nbsp;simpler&nbsp;code – get unmatched performance for free.
+                Build faster apps faster with an optimizing compiler and UI kit.
+                Better,&nbsp;simpler&nbsp;code + unmatched performance.
               </Paragraph>
             </YStack>
           </YStack>

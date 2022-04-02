@@ -155,8 +155,11 @@ function Performance() {
     <ContainerLarge position="relative">
       <YStack ai="center" zi={1} space="$4">
         <YStack ai="center" space="$2">
-          <HomeH2>Build more ambitious apps</HomeH2>
-          <HomeH3>UX, meet DX - inline styles that run fast</HomeH3>
+          <HomeH2>Dramatically better performance</HomeH2>
+          <Paragraph maxWidth={580} ta="center" size="$6" theme="alt2">
+            Tamagui makes all styles - even inline styles - far faster than any other UI kit thanks
+            to an advanced, multi-stage optimizing compiler.
+          </Paragraph>
         </YStack>
 
         <YStack
