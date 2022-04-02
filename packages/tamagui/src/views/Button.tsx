@@ -90,7 +90,20 @@ export const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttr
           ...rest
         } = props as ButtonProps
         const theme = useTheme()
-        const color = (theme?.[colorProp as any] || colorProp || theme?.color)?.toString()
+
+        // get color from prop or theme
+        let color: any
+        // @ts-expect-error
+        if (theme && colorProp && colorProp in theme) {
+          // @ts-expect-error
+          color = theme[colorProp]
+        } else if (colorProp) {
+          color = colorProp
+        } else {
+          color = theme?.color
+        }
+        color = color?.toString()
+
         const addTheme = (el: any) => {
           if (isValidElement(el)) {
             return el

@@ -54,6 +54,14 @@ export const useTheme = (
       return themes[getTamagui().defaultTheme || 'light' || Object.keys(themes)[0]]
     }
     return new Proxy(theme, {
+      has(_, key) {
+        if (typeof key === 'string') {
+          if (key[0] === '$') {
+            key = key.slice(1)
+          }
+        }
+        return Reflect.has(theme, key)
+      },
       get(_, key) {
         if (!name) {
           return Reflect.get(_, key)
@@ -93,7 +101,7 @@ export const useTheme = (
             return activeTheme[key]
           }
           if (process.env.NODE_ENV === 'development') {
-            console.warn(`No theme value "${String(key)}" in`, activeTheme)
+            console.warn(`No theme value "${String(key)}" in ${name}`)
             return null
           }
         }

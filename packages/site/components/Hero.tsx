@@ -9,7 +9,7 @@
 
 import { ArrowRight, Compass, Cpu, Layers } from '@tamagui/feather-icons'
 import NextLink from 'next/link'
-import { memo, useMemo } from 'react'
+import { memo } from 'react'
 import {
   Button,
   H3,
@@ -17,7 +17,6 @@ import {
   Spacer,
   Text,
   Theme,
-  ThemeReset,
   Title,
   Tooltip,
   VisuallyHidden,
@@ -42,7 +41,7 @@ export function Hero() {
         <HeroTop />
       </Theme>
 
-      <XStack mt={-28} ai="center" jc="center">
+      <XStack theme="alt1" mt={-28} ai="center" jc="center">
         <SearchButton width={350} size="$6">
           Search Docs...
         </SearchButton>

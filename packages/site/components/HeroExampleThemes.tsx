@@ -34,8 +34,6 @@ for (let i = 0; i < themes[0].length; i++) {
   }
 }
 
-console.log('themeCombos', themeCombos)
-
 const flatToSplit = (i: number) => {
   const colorI = Math.floor(i / 4)
   const shadeI = i % 4
@@ -105,7 +103,6 @@ export function HeroExampleThemes() {
     const node = scrollView.current
     if (!node) return
     const listener = debounce(() => {
-      console.log('done')
       setScrollLock(null)
     }, 200)
     node.addEventListener('scroll', listener)
@@ -289,7 +286,6 @@ export function HeroExampleThemes() {
             // @ts-ignore
             ref={scrollView}
             onScroll={(e: any) => {
-              console.log('scrollin', scrollLock)
               if (scrollLock === 'animate' || scrollLock === 'shouldAnimate') {
                 return
               }

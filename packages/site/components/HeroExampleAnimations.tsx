@@ -158,6 +158,7 @@ export function HeroExampleAnimations() {
               $sm={{ width: '100%' }}
             >
               <Square
+                className=""
                 animation={animation.animation}
                 elevation="$4"
                 size={110}

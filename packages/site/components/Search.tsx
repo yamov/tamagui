@@ -67,6 +67,7 @@ export function SearchProvider({ children }) {
             indexName={INDEX}
             navigator={{
               navigate({ itemUrl }) {
+                console.log('navigate', itemUrl)
                 setIsOpen(false)
                 router.push(itemUrl)
               },

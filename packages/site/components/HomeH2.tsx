@@ -3,6 +3,7 @@ import { H2, H3, styled } from 'tamagui'
 export const HomeH2 = styled(H2, {
   als: 'center',
   size: '$10',
+  letterSpacing: -2,
   fontSize: 40,
 
   $sm: {
