@@ -5,7 +5,6 @@ import { ScrollView } from 'react-native'
 import {
   Button,
   InteractiveContainer,
-  Square,
   Theme,
   ThemeName,
   XStack,

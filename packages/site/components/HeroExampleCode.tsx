@@ -29,7 +29,7 @@ export function HeroExampleCode() {
     <ContainerLarge position="relative">
       <YStack zi={1} space="$5">
         <YStack space="$2">
-          <HomeH2>Next-generation compiler</HomeH2>
+          <HomeH2>DX, meet UX</HomeH2>
           <HomeH3>Faster runtime 🤝 less code 🤝 more platforms</HomeH3>
         </YStack>
 

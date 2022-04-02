@@ -131,7 +131,7 @@ export function HeroExampleAnimations() {
       <ContainerLarge position="relative" space="$6">
         <YStack zi={1} space="$1">
           <HomeH2>First-class animations</HomeH2>
-          <HomeH3>Plug-and-play drivers for every platform</HomeH3>
+          {/* <HomeH3>Plug-and-play drivers for every platform</HomeH3> */}
         </YStack>
 
         <XStack
@@ -240,59 +240,21 @@ export function HeroExampleAnimations() {
           </YStack>
         </XStack>
 
-        <XStack space="$4" $sm={{ flexDirection: 'column' }}>
-          <Card
-            width="33.33%"
-            $sm={{ width: 'auto' }}
-            space
-            tag="a"
-            rel="noopener noreferrer"
-            p="$4"
-          >
-            <H4 cursor="pointer" fontFamily="$body">
-              CSS
-            </H4>
-            <Paragraph cursor="pointer" theme="alt2">
-              Generates clean CSS transitions.
-            </Paragraph>
-          </Card>
-          <Card
-            width="33.33%"
-            $sm={{ width: 'auto' }}
-            space
-            tag="a"
-            rel="noopener noreferrer"
-            p="$4"
-          >
-            <H4 cursor="pointer" fontFamily="$body">
-              Reanimated
-            </H4>
-            <Paragraph cursor="pointer" theme="alt2">
-              Generates clean CSS transitions.
-            </Paragraph>
-          </Card>
-          <Card
-            width="33.33%"
-            $sm={{ width: 'auto' }}
-            space
-            tag="a"
-            rel="noopener noreferrer"
-            p="$4"
-          >
-            <H4 cursor="pointer" fontFamily="$body">
-              Motion
-            </H4>
-            <Paragraph cursor="pointer" theme="alt2">
-              Generates clean CSS transitions.
-            </Paragraph>
-          </Card>
-        </XStack>
-
-        <Link href="/docs/core/animations" passHref>
-          <Button als="center" theme={tint} tag="a">
-            Animations docs &raquo;
+        <XStack als="center" space="$1">
+          <Button theme={tint} tag="a">
+            CSS &raquo;
           </Button>
-        </Link>
+          <Button theme={tint} tag="a">
+            Reanimated &raquo;
+          </Button>
+          <Button theme={tint} tag="a">
+            Motion &raquo;
+          </Button>
+
+          <Link href="/docs/core/animations" passHref>
+            <Button tag="a">Animations docs &raquo;</Button>
+          </Link>
+        </XStack>
       </ContainerLarge>
     </YStack>
   )
