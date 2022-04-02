@@ -105,8 +105,10 @@ export function HeroExampleThemes() {
     const node = scrollView.current
     if (!node) return
     const listener = debounce(() => {
+      console.log('done')
       setScrollLock(null)
     }, 200)
+    console.log('add listener')
     node.addEventListener('scroll', listener)
     return () => {
       node.removeEventListener('scroll', listener)
@@ -285,6 +287,7 @@ export function HeroExampleThemes() {
             // @ts-ignore
             ref={scrollView}
             onScroll={(e: any) => {
+              console.log('scrollin', scrollLock)
               if (scrollLock === 'animate' || scrollLock === 'shouldAnimate') {
                 return
               }
