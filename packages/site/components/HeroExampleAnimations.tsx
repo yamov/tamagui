@@ -191,7 +191,7 @@ export function HeroExampleAnimations() {
               {animationDescriptions.map((item, i) => {
                 const isActive = item === animation
                 return (
-                  <Theme key={item.name} name={isActive ? null : 'alt3'}>
+                  <Theme key={item.name} name={isActive ? null : 'alt2'}>
                     <YStack
                       {...(isActive && {
                         bc: '$backgroundHover',
@@ -222,7 +222,7 @@ export function HeroExampleAnimations() {
 
             <Separator />
 
-            <XStack p="$4" ai="center" jc="center">
+            <XStack theme="alt1" bc="$background" p="$4" ai="center" jc="center">
               {settings.map(([key, value], i) => {
                 return (
                   <React.Fragment key={key}>

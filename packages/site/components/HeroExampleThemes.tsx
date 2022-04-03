@@ -204,23 +204,21 @@ export function HeroExampleThemes() {
     })
   }, [])
 
-  const titleElements = useMemo(() => {
-    return (
-      <ContainerLarge space="$3" position="relative">
-        <YStack zi={1} space="$1">
-          <HomeH2>Truly flexible themes</HomeH2>
-          <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
-        </YStack>
-      </ContainerLarge>
-    )
-  }, [])
-
   return (
     <YStack>
-      {titleElements}
+      {useMemo(() => {
+        return (
+          <ContainerLarge space="$3" position="relative">
+            <YStack zi={1} space="$1">
+              <HomeH2>Truly flexible themes</HomeH2>
+              <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
+            </YStack>
+          </ContainerLarge>
+        )
+      }, [])}
 
       <YStack mt="$3" ai="center" jc="center" space="$2">
-        <ScrollView style={{ maxWidth: '100%' }} horizontal showsHorizontalScrollIndicator={false}>
+        <XStack className="scroll-horizontal no-scrollbar">
           <XStack px="$4" space="$4">
             <InteractiveContainer bc="$backgroundHover" p="$1" br="$10" als="center" space="$1">
               {['light', 'dark'].map((name, i) => {
@@ -269,7 +267,7 @@ export function HeroExampleThemes() {
               </Theme>
             </InteractiveContainer>
           </XStack>
-        </ScrollView>
+        </XStack>
 
         <YStack
           mt={-20}
@@ -280,8 +278,9 @@ export function HeroExampleThemes() {
           pointerEvents={scrollLock === 'animate' ? 'none' : 'auto'}
         >
           <XStack
+            className="scroll-horizontal no-scrollbar"
             // @ts-ignore
-            style={{ width: '100%', overflow: 'hidden', overflowX: 'auto' }}
+            // style={{ width: '100%', overflow: 'hidden', overflowX: 'auto' }}
             // @ts-ignore
             ref={scrollView}
             onScroll={(e: any) => {

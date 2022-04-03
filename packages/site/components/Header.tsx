@@ -28,7 +28,6 @@ export function Header({ floating, disableNew }: { floating?: boolean; disableNe
       position="relative"
       tag="header"
       py={floating ? 0 : '$2'}
-      px="$4"
       jc="space-between"
       p="relative"
       zi={1}

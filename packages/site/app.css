@@ -201,6 +201,10 @@ pre {
   -webkit-text-fill-color: transparent;
 }
 
+iframe {
+  border-width: 0;
+}
+
 /* code highlighting */
 
 /* //   $$background: $loContrast;
@@ -365,6 +369,22 @@ pre {
   opacity: 0;
 }
 
+.scroll-horizontal {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+/* Algolia */
+
 .DocSearch {
   --docsearch-primary-color: var(--colorPress);
   --docsearch-highlight-color: var(--docsearch-primary-color);
@@ -418,6 +438,8 @@ pre {
   --docsearch-hit-background: #333;
   --docsearch-key-gradient: linear-gradient(-26.5deg, #161618, #4a4a4a);
 }
+
+/*  */
 
 @font-face {
   font-family: 'Inter';

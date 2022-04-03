@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
 import { memo, useEffect, useState } from 'react'
-import { Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
+import { Circle, Image, Paragraph, Spacer, Theme, VisuallyHidden, XStack, YStack } from 'tamagui'
 
 import favicon from '../public/favicon.svg'
 import { ContainerLarge } from './Container'
@@ -59,29 +59,32 @@ export const HeroResponsive = memo(() => {
 
 const Header = memo(() => {
   return (
-    <XStack f={1} ov="hidden" space="$6">
-      <Theme name="purple_alt2">
-        <IconStack p="$4">
+    <XStack f={1} ov="hidden">
+      <XStack $sm={{ display: 'none' }}>
+        <IconStack theme="purple_alt2" p="$4">
           <Monitor />
         </IconStack>
-      </Theme>
+        <Spacer size="$6" />
+      </XStack>
 
       <YStack f={1} mt={-10} space="$2">
         <HomeH2 als="flex-start">Responsive, everywhere</HomeH2>
-        <Paragraph maxWidth={580} size="$6" theme="alt2">
-          Resizing React Native Web apps is often incredibly slow as every component on screen runs
-          JavaScript on the main thread.
+        <Paragraph maxWidth={580} size="$5" theme="alt2">
+          React Native Web apps resize slowly as every component runs expensive JS on the main
+          thread.
         </Paragraph>
 
-        <Paragraph maxWidth={580} size="$6" theme="alt2">
-          Tamagui compiles intuitive inline responsive syntax into optimal CSS on the web, or
-          hoisted StyleSheet.create on native, leading to dramatically easier, faster, and lighter
-          responsive styles.
+        <Paragraph maxWidth={580} size="$5" theme="alt2">
+          Tamagui compiles inline responsive styles into CSS Media Queries on the web, or hoists to
+          StyleSheet.create on native for dramatically easier, faster, and lighter responsive
+          styling.
         </Paragraph>
       </YStack>
     </XStack>
   )
 })
+
+const height = 400
 
 const Safari = memo(() => {
   return (
@@ -132,13 +135,13 @@ const Safari = memo(() => {
         </XStack>
       </YStack>
 
-      <XStack bbw={1} boc="$borderColor" bc="$backgroundHover">
+      <XStack bbw={1} boc="$borderColor">
         <Tab btlr={0}>Tamagui - React Native & Web UI kits</Tab>
         <Tab active>Tamagui - React Native & Web UI kits</Tab>
         <Tab btrr={0}>Tamagui - React Native & Web UI kits</Tab>
       </XStack>
 
-      <YStack h={350}>
+      <YStack bc="$backgroundHover" h={height}>
         <BrowserPane />
       </YStack>
     </YStack>
@@ -155,7 +158,7 @@ const Tab = memo(({ active, children, ...props }: any) => {
         brw={1}
         btlr={active ? 0 : 4}
         btrr={active ? 0 : 4}
-        bc="$background"
+        bc="$backgroundHover"
         ov="hidden"
         f={1}
         py="$1"
@@ -174,5 +177,9 @@ const Tab = memo(({ active, children, ...props }: any) => {
 })
 
 const BrowserPane = memo(() => {
-  return <YStack></YStack>
+  return (
+    <YStack>
+      <iframe width="100%" height={height} src="/responsive-demo" />
+    </YStack>
+  )
 })
