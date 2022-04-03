@@ -28,12 +28,10 @@ export default function Home() {
         <YStack space="$8">
           <Hero />
           <ContainerLarge>
-            <XStack mt="$3" ai="center">
-              <PageSeparator />
+            <XStack mt="$2" mb={-20} jc="center" ai="center">
               <ThemeTint>
                 <InstallInput />
               </ThemeTint>
-              <PageSeparator />
             </XStack>
           </ContainerLarge>
 
@@ -42,13 +40,17 @@ export default function Home() {
           </TintedYStack>
 
           <HeroResponsive />
-          <PageSeparator />
-          <HeroExampleCode />
+
           <TintedYStack>
             <HeroPerformance />
           </TintedYStack>
-          <HeroExampleAnimations />
-          <PageSeparator />
+
+          <HeroExampleCode />
+
+          <TintedYStack>
+            <HeroExampleAnimations />
+          </TintedYStack>
+
           <HeroTypography />
 
           <TintedYStack>

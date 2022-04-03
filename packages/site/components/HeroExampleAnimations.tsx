@@ -138,7 +138,6 @@ export function HeroExampleAnimations() {
           bw={1}
           boc="$borderColor"
           w="100%"
-          theme="alt1"
           br="$6"
           ov="hidden"
           bc="$background"
@@ -151,7 +150,7 @@ export function HeroExampleAnimations() {
             <YStack
               ref={container}
               pos="relative"
-              className="hero-gradient"
+              // className="hero-gradient"
               ai="center"
               jc="center"
               width="60%"
@@ -188,37 +187,39 @@ export function HeroExampleAnimations() {
           <Separator vertical />
 
           <YStack $sm={{ display: 'none' }} width="40%">
-            <ScrollView>
-              {animationDescriptions.map((item, i) => {
-                const isActive = item === animation
-                return (
-                  <Theme key={item.name} name={isActive ? null : 'alt2'}>
-                    <YStack
-                      {...(isActive && {
-                        bc: '$backgroundHover',
-                      })}
-                      px="$4"
-                      py="$2"
-                      cursor="pointer"
-                      hoverStyle={{
-                        bc: '$backgroundHover',
-                      }}
-                      onPress={() => {
-                        setAnimationI(i)
-                        next()
-                      }}
-                    >
-                      <Paragraph cursor="inherit" size="$4" fontWeight="800">
-                        {item.name}
-                      </Paragraph>
-                      <Paragraph cursor="inherit" theme="alt2">
-                        {item.description}
-                      </Paragraph>
-                    </YStack>
-                  </Theme>
-                )
-              })}
-            </ScrollView>
+            <YStack theme="alt1" backgroundColor="$background">
+              <ScrollView>
+                {animationDescriptions.map((item, i) => {
+                  const isActive = item === animation
+                  return (
+                    <Theme key={item.name} name={isActive ? null : 'alt2'}>
+                      <YStack
+                        {...(isActive && {
+                          bc: '$backgroundHover',
+                        })}
+                        px="$4"
+                        py="$2"
+                        cursor="pointer"
+                        hoverStyle={{
+                          bc: '$backgroundHover',
+                        }}
+                        onPress={() => {
+                          setAnimationI(i)
+                          next()
+                        }}
+                      >
+                        <Paragraph cursor="inherit" size="$4" fontWeight="800">
+                          {item.name}
+                        </Paragraph>
+                        <Paragraph cursor="inherit" theme="alt2">
+                          {item.description}
+                        </Paragraph>
+                      </YStack>
+                    </Theme>
+                  )
+                })}
+              </ScrollView>
+            </YStack>
 
             <Separator />
 

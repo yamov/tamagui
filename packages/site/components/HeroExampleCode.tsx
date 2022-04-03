@@ -27,8 +27,8 @@ export function HeroExampleCode() {
 
   return (
     <ContainerLarge position="relative">
-      <YStack zi={1} space="$5">
-        <YStack space="$2">
+      <YStack zi={1} space="$4">
+        <YStack space="$1">
           <HomeH2>DX, meet UX</HomeH2>
           <HomeH3>Faster runtime 🤝 less code 🤝 more platforms</HomeH3>
         </YStack>
@@ -54,28 +54,38 @@ export function HeroExampleCode() {
         <Theme name={tint}>
           <XStack $sm={{ flexDirection: 'column' }} mt="$2" jc="space-between">
             <YStack flex={1} maxWidth="50%" $sm={{ maxWidth: '100%' }} px="$2" space="$6">
+              <CodeExamples {...activeExample.input} />
               <Paragraph minHeight={50} ta="center" px="$7">
                 <CodeInline size="$4">Input</CodeInline>
                 <span style={{ opacity: 0.65 }}>
                   &nbsp;－&nbsp;{activeExample.input.description}
                 </span>
               </Paragraph>
-
-              <CodeExamples {...activeExample.input} />
             </YStack>
-            <YStack $sm={{ display: 'none' }} mx={-30} zIndex={1000}>
-              <IconStack p="$3" mb={0}>
+            <YStack
+              $sm={{ display: 'none' }}
+              pos="absolute"
+              left={0}
+              right={0}
+              ai="center"
+              jc="center"
+              bottom={0}
+              mx={-30}
+              zIndex={1000}
+              pe="none"
+            >
+              <IconStack als="center" p="$3" mb={0}>
                 <FastForward color="var(--colorHover)" size={18} />
               </IconStack>
             </YStack>
             <YStack flex={1} maxWidth="50%" $sm={{ maxWidth: '100%', mt: '$6' }} px="$2" space="$6">
+              <CodeExamples {...activeExample.output} />
               <Paragraph minHeight={50} ta="center" px="$7">
                 <CodeInline size="$4">Output</CodeInline>
                 <span style={{ opacity: 0.65 }}>
                   &nbsp;－&nbsp;{activeExample.output.description}
                 </span>
               </Paragraph>
-              <CodeExamples {...activeExample.output} />
             </YStack>
           </XStack>
         </Theme>

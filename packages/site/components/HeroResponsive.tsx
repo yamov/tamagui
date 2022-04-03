@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
 import favicon from '../public/favicon.svg'
@@ -8,7 +8,18 @@ import { HomeH2 } from './HomeH2'
 import { IconStack } from './IconStack'
 
 export const HeroResponsive = memo(() => {
+  const [isDragging, setIsDragging] = useState(false)
   const [width, setWidth] = useState(70)
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      console.log(e.pageX)
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+    }
+  }, [])
 
   return (
     <ContainerLarge>
@@ -17,17 +28,29 @@ export const HeroResponsive = memo(() => {
 
         <Spacer size="$6" />
 
-        <XStack ai="center" f={1} w={`${width}%`} space>
+        <XStack f={1} w={`${width}%`} space>
           <Safari />
 
           <YStack
-            bc="$color"
-            opacity={0.35}
-            hoverStyle={{ opacity: 0.4 }}
-            br="$8"
-            w={8}
-            height={34}
-          />
+            jc="center"
+            f={1}
+            cursor="ew-resize"
+            onPress={() => {
+              setIsDragging(true)
+            }}
+            onPressOut={() => {
+              setIsDragging(false)
+            }}
+          >
+            <YStack
+              bc="$color"
+              opacity={0.35}
+              hoverStyle={{ opacity: 0.4 }}
+              br="$8"
+              w={8}
+              height={34}
+            />
+          </YStack>
         </XStack>
       </YStack>
     </ContainerLarge>
