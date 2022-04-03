@@ -81,7 +81,7 @@ const HeroTop = memo(() => {
               <Tooltip contents="Works the same on iOS, Android, and web">
                 <span className="rainbow clip-text help">Universal</span>
               </Tooltip>{' '}
-              React design systems made faster on native&nbsp;&&nbsp;web
+              design systems for React Native&nbsp;&&nbsp;Web, faster.
             </Title>
 
             <YStack
@@ -113,8 +113,8 @@ const HeroTop = memo(() => {
                   fontWeight: '400',
                 }}
               >
-                Build faster apps faster with an optimizing compiler and UI kit.
-                Better,&nbsp;simpler&nbsp;code + unmatched performance.
+                An optimizing compiler and UI kit that let you write less code.
+                Write&nbsp;once,&nbsp;run&nbsp;everywhere, with better performance.
               </Paragraph>
             </YStack>
           </YStack>
