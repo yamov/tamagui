@@ -38,7 +38,7 @@ export default function Home() {
               </ThemeTint>
             </XStack>
           </ContainerLarge>
-          <SectionTinted>
+          <SectionTinted gradient>
             <HeroExampleThemes />
           </SectionTinted>
           <Section>
@@ -79,19 +79,19 @@ const Section = ({ children }) => {
   )
 }
 
-const SectionTinted = ({ children, ...props }: any) => {
+const SectionTinted = ({ children, gradient, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
     <YStack pos="relative" py="$10" {...props}>
       <YStack
         fullscreen
+        className={gradient ? `gradient-${tint}` : ''}
         zi={-1}
         bc={`$${tint}1`}
         btw={1}
         bbw={1}
         boc={`$${tint}4`}
-        opacity={0.75}
       />
       {childrenMemo}
     </YStack>

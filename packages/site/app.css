@@ -182,6 +182,30 @@ pre {
   cursor: help;
 }
 
+.gradient-blue {
+  background: linear-gradient(90deg, var(--blue2), var(--purple2));
+}
+
+.gradient-red {
+  background: linear-gradient(90deg, var(--red2), var(--orange2));
+}
+
+.gradient-orange {
+  background: linear-gradient(90deg, var(--orange2), var(--yellow2));
+}
+
+.gradient-purple {
+  background: linear-gradient(90deg, var(--purple2), var(--green2));
+}
+
+.gradient-green {
+  background: linear-gradient(90deg, var(--green2), var(--teal2));
+}
+
+.gradient-teal {
+  background: linear-gradient(90deg, var(--teal2), var(--yellow2));
+}
+
 .rainbow {
   background: -webkit-linear-gradient(
     -190deg,
