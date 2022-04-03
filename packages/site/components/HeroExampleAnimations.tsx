@@ -131,7 +131,7 @@ export function HeroExampleAnimations() {
       <ContainerLarge position="relative" space="$6">
         <YStack zi={1} space="$1">
           <HomeH2>First-class animations</HomeH2>
-          {/* <HomeH3>Plug-and-play drivers for every platform</HomeH3> */}
+          <HomeH3>Plug-and-play drivers for every platform</HomeH3>
         </YStack>
 
         <XStack

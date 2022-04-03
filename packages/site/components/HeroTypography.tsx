@@ -1,6 +1,5 @@
-import { Button, H1, H2, H3, H4, H5, H6, Paragraph, Separator, XStack, YStack } from 'tamagui'
+import { Button, Card, H1, H2, H3, H4, H5, H6, Paragraph, Separator, XStack, YStack } from 'tamagui'
 
-import { Card } from './Card'
 import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
 import { HomeH2, HomeH3 } from './HomeH2'
@@ -12,11 +11,12 @@ export const HeroTypography = () => {
         <ContainerLarge h={700} ov="hidden" position="relative">
           <YStack ai="center" space="$2">
             <HomeH2>Typography</HomeH2>
+            <HomeH3>Plug and play fonts with ease.</HomeH3>
           </YStack>
 
           <YStack pos="relative">
             <YStack pe="none" fullscreen bottom={-300} bc="$background" opacity={0.2} zi={1} />
-            <YStack pos="relative" scale={1.7} y={80} x={250}>
+            <YStack pos="relative" scale={1.7} y={70} x={250}>
               <XStack mb={100} p="$6" space $sm={{ flexDirection: 'column' }}>
                 <YStack
                   ai="flex-end"
@@ -27,20 +27,20 @@ export const HeroTypography = () => {
                   f={2}
                   als="flex-start"
                 >
-                  <H1 theme="red_alt3">Hot-swappable</H1>
-                  <H2 theme="orange_alt3" opacity={1}>
+                  <H1 theme="red_alt4">Hot-swappable</H1>
+                  <H2 theme="orange_alt4" opacity={1}>
                     individually-styled
                   </H2>
-                  <H3 theme="pink_alt3" opacity={0.9}>
+                  <H3 theme="pink_alt4" opacity={0.9}>
                     typed and optimized
                   </H3>
-                  <H4 theme="purple_alt3" opacity={0.7}>
+                  <H4 theme="purple_alt4" opacity={0.7}>
                     premade or custom
                   </H4>
-                  <H5 theme="blue_alt3" opacity={0.6}>
+                  <H5 theme="blue_alt4" opacity={0.6}>
                     easy to author
                   </H5>
-                  <H6 theme="teal_alt3" opacity={0.5}>
+                  <H6 theme="teal_alt4" opacity={0.5}>
                     font themes
                   </H6>
                 </YStack>
@@ -61,22 +61,22 @@ export const HeroTypography = () => {
                 f={2}
                 als="flex-start"
               >
-                <H6 fontFamily="$mono" theme="red_alt3" opacity={0.5}>
+                <H6 fontFamily="$mono" theme="red_alt4" opacity={0.5}>
                   font themes
                 </H6>
-                <H5 fontFamily="$mono" theme="orange_alt3" opacity={0.6}>
+                <H5 fontFamily="$mono" theme="orange_alt4" opacity={0.6}>
                   easy to author
                 </H5>
-                <H4 fontFamily="$mono" theme="pink_alt3" opacity={0.7}>
+                <H4 fontFamily="$mono" theme="pink_alt4" opacity={0.7}>
                   premade or custom
                 </H4>
-                <H3 fontFamily="$mono" theme="purple_alt3" opacity={0.9}>
+                <H3 fontFamily="$mono" theme="purple_alt4" opacity={0.9}>
                   typed and optimized
                 </H3>
-                <H2 fontFamily="$mono" theme="blue_alt3" opacity={1}>
+                <H2 fontFamily="$mono" theme="blue_alt4" opacity={1}>
                   individually-styled
                 </H2>
-                <H1 fontFamily="$mono" theme="teal_alt3">
+                <H1 fontFamily="$mono" theme="teal_alt4">
                   Hot-swappable
                 </H1>
               </YStack>
@@ -85,7 +85,7 @@ export const HeroTypography = () => {
         </ContainerLarge>
       </YStack>
 
-      <XStack pos="absolute" top="50%" left="50%" x={-200} y={-150} zi={100}>
+      <XStack pos="absolute" top="50%" left="50%" x={-200} y={-180} zi={100}>
         <OverlayCard />
       </XStack>
     </YStack>
@@ -99,12 +99,12 @@ const OverlayCard = () => {
   return (
     <Card br="$6" theme={tint} elevation="$4">
       <YStack jc="center" p="$6" space="$6" mw={400}>
-        <Paragraph ta="left" fontSize="$8" lineHeight="$8" theme="alt1">
-          Font themes that understand the needs of vertical rythym.
+        <Paragraph ta="left" fontSize="$8" lineHeight="$7" theme="alt1">
+          Font themes should understand the needs of vertical rythym.
         </Paragraph>
 
         <Paragraph ta="left" fontSize="$6" lineHeight="$6" theme="alt2">
-          Tamagui font tokens are designed to overcome limitations of existing design systems.
+          Tamagui font tokens overcome limitations of existing design systems.
         </Paragraph>
 
         <Paragraph ta="left" fontSize="$4" lineHeight="$4" theme="alt2">

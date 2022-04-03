@@ -25,7 +25,7 @@ export default function Home() {
       <TitleAndMetaTags title="Tamagui — React Native + Web UI kit" />
       <HeaderFloating />
       <YStack>
-        <YStack space="$8">
+        <YStack space="$6">
           <Hero />
           <ContainerLarge>
             <XStack mt="$2" mb={-20} jc="center" ai="center">
@@ -34,31 +34,22 @@ export default function Home() {
               </ThemeTint>
             </XStack>
           </ContainerLarge>
-
           <TintedYStack>
             <HeroExampleThemes />
           </TintedYStack>
-
           <HeroResponsive />
-
           <TintedYStack>
             <HeroPerformance />
           </TintedYStack>
-
           <HeroExampleCode />
-
           <TintedYStack>
             <HeroExampleAnimations />
           </TintedYStack>
-
           <HeroTypography />
-
           <TintedYStack>
             <HeroExampleProps />
           </TintedYStack>
-
           <FeaturesGrid />
-
           <TintedYStack>
             <Community />
           </TintedYStack>
@@ -72,7 +63,16 @@ const TintedYStack = ({ children, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack py="$8" my="$4" bc={`$${tint}1`} btw={1} bbw={1} boc={`$${tint}4`} {...props}>
+    <YStack pos="relative" py="$7" my="$4" {...props}>
+      <YStack
+        fullscreen
+        zi={-1}
+        bc={`$${tint}1`}
+        btw={1}
+        bbw={1}
+        boc={`$${tint}4`}
+        opacity={0.75}
+      />
       {childrenMemo}
     </YStack>
   )

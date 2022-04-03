@@ -17,8 +17,8 @@ export const HeroExampleProps = () => {
   return (
     <ContainerLarge position="relative">
       <YStack ai="center" space="$2">
-        <HomeH2>Hover, Press, Focus</HomeH2>
-        <HomeH3>Time-saving props on every view</HomeH3>
+        <HomeH2>Props that save time</HomeH2>
+        <HomeH3>Events and styles for pseudos and more.</HomeH3>
       </YStack>
 
       <XStack p="$6" space="$4" $sm={{ flexDirection: 'column' }}>
