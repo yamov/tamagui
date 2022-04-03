@@ -97,22 +97,19 @@ const OverlayCard = () => {
 
   // {/* TODO elevation not overriding? */}
   return (
-    <Card br="$6" theme={tint} elevation="$4">
+    <Card br="$6" bc={`$${tint}2`} elevation="$4">
       <YStack jc="center" p="$6" space="$6" mw={400}>
-        <Paragraph ta="left" fontSize="$8" lineHeight="$7" theme="alt1">
+        <Paragraph ta="left" fontSize="$8" lineHeight="$7">
           Font themes should understand the needs of vertical rythym.
         </Paragraph>
 
-        <Paragraph ta="left" fontSize="$6" lineHeight="$6" theme="alt2">
-          Tamagui font tokens overcome limitations of existing design systems.
+        <Paragraph ta="left" size="$5" theme="alt1">
+          Tamagui font tokens overcome limitations of existing design systems. Theming each font
+          family independently, across every font style prop, opens up an ecosystem of font
+          packages.
         </Paragraph>
 
-        <Paragraph ta="left" fontSize="$4" lineHeight="$4" theme="alt2">
-          Control each font individually for every prop from font-size to letter-spacing -
-          specifically at every size.
-        </Paragraph>
-
-        <Button theme="blue">Learn more</Button>
+        <Button theme={tint}>Learn more</Button>
       </YStack>
     </Card>
   )
