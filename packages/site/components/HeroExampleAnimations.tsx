@@ -131,7 +131,7 @@ export function HeroExampleAnimations() {
       <ContainerLarge position="relative" space="$6">
         <YStack zi={1} space="$1">
           <HomeH2>First-class animations</HomeH2>
-          <HomeH3>Plug-and-play drivers for every platform</HomeH3>
+          <HomeH3>Plug-and-play drivers for every platform.</HomeH3>
         </YStack>
 
         <XStack
@@ -187,39 +187,38 @@ export function HeroExampleAnimations() {
           <Separator vertical />
 
           <YStack $sm={{ display: 'none' }} width="40%">
-            <YStack theme="alt1" backgroundColor="$background">
-              <ScrollView>
-                {animationDescriptions.map((item, i) => {
-                  const isActive = item === animation
-                  return (
-                    <Theme key={item.name} name={isActive ? null : 'alt2'}>
-                      <YStack
-                        {...(isActive && {
-                          bc: '$backgroundHover',
-                        })}
-                        px="$4"
-                        py="$2"
-                        cursor="pointer"
-                        hoverStyle={{
-                          bc: '$backgroundHover',
-                        }}
-                        onPress={() => {
-                          setAnimationI(i)
-                          next()
-                        }}
-                      >
-                        <Paragraph cursor="inherit" size="$4" fontWeight="800">
-                          {item.name}
-                        </Paragraph>
-                        <Paragraph cursor="inherit" theme="alt2">
-                          {item.description}
-                        </Paragraph>
-                      </YStack>
-                    </Theme>
-                  )
-                })}
-              </ScrollView>
-            </YStack>
+            <ScrollView>
+              {animationDescriptions.map((item, i) => {
+                const isActive = item === animation
+                return (
+                  <Theme key={item.name} name={isActive ? null : 'alt3'}>
+                    <YStack
+                      {...(isActive && {
+                        bc: '$backgroundHover',
+                      })}
+                      px="$4"
+                      bc="$background"
+                      py="$2"
+                      cursor="pointer"
+                      hoverStyle={{
+                        bc: '$backgroundHover',
+                      }}
+                      onPress={() => {
+                        setAnimationI(i)
+                        next()
+                      }}
+                    >
+                      <Paragraph cursor="inherit" size="$4" fontWeight="800">
+                        {item.name}
+                      </Paragraph>
+                      <Paragraph cursor="inherit" theme="alt2">
+                        {item.description}
+                      </Paragraph>
+                    </YStack>
+                  </Theme>
+                )
+              })}
+            </ScrollView>
 
             <Separator />
 

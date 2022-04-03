@@ -28,7 +28,7 @@ export default function Home() {
         <YStack space="$6">
           <Hero />
           <ContainerLarge>
-            <XStack mt="$2" mb={-20} jc="center" ai="center">
+            <XStack mt="$2" jc="center" ai="center">
               <ThemeTint>
                 <InstallInput />
               </ThemeTint>
@@ -63,7 +63,7 @@ const TintedYStack = ({ children, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack pos="relative" py="$7" my="$4" {...props}>
+    <YStack pos="relative" py="$8" my="$4" {...props}>
       <YStack
         fullscreen
         zi={-1}

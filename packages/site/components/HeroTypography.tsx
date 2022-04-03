@@ -11,7 +11,7 @@ export const HeroTypography = () => {
         <ContainerLarge h={750} ov="hidden" position="relative">
           <YStack ai="center" space="$2">
             <HomeH2>Typography</HomeH2>
-            <HomeH3>Plug and play fonts with ease.</HomeH3>
+            <HomeH3>Plug-and-play fonts with ease.</HomeH3>
           </YStack>
 
           <YStack pos="relative">

@@ -30,7 +30,7 @@ export function HeroExampleCode() {
       <YStack zi={1} space="$4">
         <YStack space="$1">
           <HomeH2>DX, meet UX</HomeH2>
-          <HomeH3>Faster runtime 🤝 less code 🤝 more platforms</HomeH3>
+          <HomeH3>Faster runtime 🤝 less code 🤝 more platforms.</HomeH3>
         </YStack>
 
         <InteractiveContainer maxWidth="100%" als="center">

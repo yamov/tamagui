@@ -72,6 +72,12 @@ const Header = memo(() => {
           Resizing React Native Web apps is often incredibly slow as every component on screen runs
           JavaScript on the main thread.
         </Paragraph>
+
+        <Paragraph maxWidth={580} size="$6" theme="alt2">
+          Tamagui compiles intuitive inline responsive syntax into optimal CSS on the web, or
+          hoisted StyleSheet.create on native, leading to dramatically easier, faster, and lighter
+          responsive styles.
+        </Paragraph>
       </YStack>
     </XStack>
   )
@@ -132,7 +138,7 @@ const Safari = memo(() => {
         <Tab btrr={0}>Tamagui - React Native & Web UI kits</Tab>
       </XStack>
 
-      <YStack h={200}>
+      <YStack h={350}>
         <BrowserPane />
       </YStack>
     </YStack>
