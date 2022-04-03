@@ -184,31 +184,31 @@ pre {
 }
 
 .gradient-blue {
-  background: linear-gradient(90deg, var(--blue2), var(--purple2));
+  background: linear-gradient(90deg, var(--blue1), var(--purple1));
 }
 
 .gradient-pink {
-  background: linear-gradient(90deg, var(--pink2), var(--red2));
+  background: linear-gradient(90deg, var(--pink1), var(--red1));
 }
 
 .gradient-red {
-  background: linear-gradient(90deg, var(--red2), var(--orange2));
+  background: linear-gradient(90deg, var(--red1), var(--orange1));
 }
 
 .gradient-orange {
-  background: linear-gradient(90deg, var(--orange2), var(--yellow2));
+  background: linear-gradient(90deg, var(--orange1), var(--yellow1));
 }
 
 .gradient-purple {
-  background: linear-gradient(90deg, var(--purple2), var(--green2));
+  background: linear-gradient(90deg, var(--purple1), var(--green1));
 }
 
 .gradient-green {
-  background: linear-gradient(90deg, var(--green2), var(--teal2));
+  background: linear-gradient(90deg, var(--green1), var(--teal1));
 }
 
 .gradient-teal {
-  background: linear-gradient(90deg, var(--teal2), var(--yellow2));
+  background: linear-gradient(90deg, var(--teal1), var(--yellow1));
 }
 
 .rainbow {

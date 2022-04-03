@@ -318,8 +318,8 @@ const Bottom = memo(() => {
     <ContainerLarge position="relative">
       <YStack ai="center" als="center" jc="center" mw={580} space="$4">
         <Paragraph theme="alt2" ta="center" size="$6">
-          Tamagui themes are fully typed based on your custom tokens and&nbsp;compile into clean
-          atomic CSS, avoiding deep-tree re-rendering.
+          Tamagui themes are fully typed based on your custom tokens, compiling into clean atomic
+          CSS that avoids deep re-renders.
         </Paragraph>
         <XStack>
           <Link href="/docs/intro/themes" passHref>

@@ -112,7 +112,7 @@ const HeroTop = memo(() => {
                 }}
               >
                 An optimizing compiler and UI kit that let you write less code.
-                Write&nbsp;once,&nbsp;run&nbsp;everywhere - no sweat.
+                Write&nbsp;once,&nbsp;run&nbsp;everywhere, faster - no sweat.
               </Paragraph>
             </YStack>
           </YStack>

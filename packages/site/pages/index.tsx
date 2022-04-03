@@ -44,7 +44,7 @@ export default function Home() {
           <Section below>
             <HeroResponsive />
           </Section>
-          <SectionTinted>
+          <SectionTinted gradient>
             <HeroPerformance />
           </SectionTinted>
           <Section>
@@ -62,8 +62,6 @@ export default function Home() {
           <Section>
             <FeaturesGrid />
           </Section>
-          <PageSeparator />
-          <Spacer size="$10" />
           <Community />
         </YStack>
       </YStack>
@@ -82,18 +80,19 @@ const Section = ({ children, below }: any) => {
 const SectionTinted = ({ children, gradient, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
+  const className = gradient ? `gradient-${tint}` : ''
   return (
     <YStack pos="relative" py="$11" {...props}>
       <YStack
         fullscreen
-        className={gradient ? `gradient-${tint}` : ''}
+        className={className}
         zi={-1}
         // @ts-ignore
         bc={`$${tint}1`}
         btw={1}
         bbw={1}
         // @ts-ignore
-        boc={`$${tint}4`}
+        boc={`$${tint}2`}
       />
       {childrenMemo}
     </YStack>
