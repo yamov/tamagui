@@ -101,12 +101,12 @@ const OverlayCard = () => {
     <Card br="$6" elevation="$4">
       <YStack jc="center" p="$6" space="$6" mw={400}>
         <Paragraph ta="left" fontSize="$8" lineHeight="$7">
-          Typed fonts with independent vertical rythym and fully customizable styles per-size.
+          Typed fonts. Independent vertical rythyms. Fully custom styles for each size.
         </Paragraph>
 
         <Paragraph ta="left" size="$5" theme="alt2">
-          Each font family can be fully styled independently with unique styles per-size. This
-          unlocks a fully shareable, and easy to swap and customize font system.
+          Each font family can be styled fully independently with unique styles per-size, unlocking
+          an easily shareable, swappable and customizable font system.
         </Paragraph>
 
         <Link href="/docs/intro/configuration" passHref>

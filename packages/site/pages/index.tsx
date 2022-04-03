@@ -27,7 +27,7 @@ export default function Home() {
       <HeaderFloating />
       <YStack>
         <YStack>
-          {/* <Hero />
+          <Hero />
           <YStack py="$7" pb="$10">
             <HeroBelow />
           </YStack>
@@ -40,7 +40,7 @@ export default function Home() {
           </ContainerLarge>
           <SectionTinted gradient>
             <HeroExampleThemes />
-          </SectionTinted> */}
+          </SectionTinted>
           <Section below>
             <HeroResponsive />
           </Section>

@@ -12,35 +12,57 @@ import { HomeH2 } from './HomeH2'
 import { IconStack } from './IconStack'
 import { useOnIntersecting } from './useOnIntersecting'
 
+let bounding: DOMRect | null = null
+let prevMove = 0
+const breakpoints = [700, 860, 1020]
+
 export const HeroResponsive = memo(() => {
   const [isDragging, setIsDragging] = useState(false)
   const [move, setMove] = useState(0)
   const ref = useRef<HTMLDivElement | null>(null)
   const safariRef = useRef<HTMLElement | null>(null)
+  const getMove = useGet(move)
   const getIsDragging = useGet(isDragging)
+  const [sizeI, setSizeI] = useState(0)
 
-  useOnIntersecting(ref, ({ isIntersecting, dispose }) => {
-    if (isIntersecting) {
-      const node = safariRef.current
-      if (!node) return
-      const left = node.offsetWidth + node.offsetLeft
-      const onMove = throttle((e: MouseEvent) => {
-        if (!getIsDragging()) return
-        const move = Math.min(500, Math.max(0, e.pageX - left))
-        setMove(move)
-      }, 16)
-      window.addEventListener('mousemove', onMove)
-      return () => {
-        window.removeEventListener('mousemove', onMove)
+  function updateBoundings() {
+    bounding = safariRef.current?.getBoundingClientRect() ?? null
+  }
+
+  useOnIntersecting(ref, ({ isIntersecting, dispose }, didResize) => {
+    dispose?.()
+    if (!isIntersecting) return
+    const node = safariRef.current
+    if (!node) return
+    if (didResize) {
+      updateBoundings()
+    }
+    prevMove = getMove()
+    const onMove = throttle((e: MouseEvent) => {
+      if (!getIsDragging() || !bounding) return
+      const right = bounding.width + bounding.x
+      const x = e.pageX - right
+      // console.log('wut is', { x, right, px: e.pageX, bw: bounding.width, bx: bounding.x })
+      const move = Math.min(500, Math.max(0, x))
+      const next = move + (prevMove || 0)
+      const width = bounding.width + x
+      setMove(next)
+      prevMove = 0
+      if (width) {
+        const nextSizeI =
+          width > breakpoints[2] ? 3 : width > breakpoints[1] ? 2 : width > breakpoints[0] ? 1 : 0
+        setSizeI(nextSizeI)
       }
-    } else {
-      dispose?.()
+    }, 16)
+    window.addEventListener('mousemove', onMove)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
     }
   })
 
   useEffect(() => {
     const handler = (_e: MouseEvent) => {
-      console.log('mouse up')
+      prevMove = getMove()
       setIsDragging(false)
     }
     window.addEventListener('mouseup', handler)
@@ -50,6 +72,7 @@ export const HeroResponsive = memo(() => {
   }, [])
 
   const width = `calc(500px + ${move}px)`
+  console.log('width', width)
   const isSmall = 500 + move < 680
 
   return (
@@ -93,16 +116,15 @@ export const HeroResponsive = memo(() => {
         <YStack pos="absolute" zi={0} t="38%" l={-1000} r={-1000} b={-75} ai="center" jc="center">
           <XStack pos="absolute" t={0} l={0} r={0} bbw={1} boc="$color" opacity={0.2} />
 
-          <YStack pos="absolute" top={-100} right={0}>
-            <Glow />
-          </YStack>
-
           <YStack f={1} h="100%" w="100%" className="bg-grid">
             <ContainerLarge pos="relative">
+              <YStack pos="absolute" top={-100} right={0}>
+                <Glow />
+              </YStack>
               <XStack>
-                <Marker name="sm" l={700} />
-                <Marker name="md" l={860} />
-                <Marker name="lg" l={1020} />
+                <Marker active={sizeI > 0} name="sm" l={breakpoints[0]} />
+                <Marker active={sizeI > 1} name="md" l={breakpoints[1]} />
+                <Marker active={sizeI > 2} name="lg" l={breakpoints[2]} />
               </XStack>
             </ContainerLarge>
           </YStack>
@@ -112,16 +134,16 @@ export const HeroResponsive = memo(() => {
   )
 })
 
-const Marker = ({ name, ...props }: any) => {
+const Marker = ({ name, active, ...props }: any) => {
   return (
-    <YStack pos="absolute" l={800} {...props}>
-      <XStack y={-80} ai="flex-start" space>
-        <YStack w={1} h={80} bc="$color" opacity={0.2} />
-        <Button size="$3" theme="alt2">
-          {name}
-        </Button>
-      </XStack>
-    </YStack>
+    <Theme name={active ? 'blue' : null}>
+      <YStack pos="absolute" l={800} {...props}>
+        <XStack y={-80} ai="flex-start" space>
+          <YStack w={1} h={80} bc="$colorHover" opacity={active ? 0.5 : 0.2} />
+          <Button size="$3">{name}</Button>
+        </XStack>
+      </YStack>
+    </Theme>
   )
 }
 

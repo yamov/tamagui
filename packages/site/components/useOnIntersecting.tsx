@@ -1,10 +1,15 @@
+import throttle from 'lodash.throttle'
 import { MutableRefObject, useEffect } from 'react'
+import { debounce } from 'tamagui'
 
 type DisposeFn = () => void
 
 export const useOnIntersecting = (
   ref: MutableRefObject<HTMLElement | null>,
-  cb: (props: IntersectionObserverEntry & { dispose?: DisposeFn | null }) => void | DisposeFn
+  cb: (
+    props: IntersectionObserverEntry & { dispose?: DisposeFn | null },
+    didResize?: boolean
+  ) => void | DisposeFn
 ) => {
   // arrow keys
   useEffect(() => {
@@ -12,21 +17,21 @@ export const useOnIntersecting = (
     if (!node) return
     // only when carousel is fully in viewport
     let dispose: DisposeFn | null = null
+    let lastEntry: any
 
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          dispose =
-            cb(
-              new Proxy(entry, {
-                get(target, key) {
-                  if (key === 'dispose') {
-                    return dispose
-                  }
-                  return Reflect.get(target, key)
-                },
-              })
-            ) || null
+          lastEntry = new Proxy(entry, {
+            get(target, key) {
+              if (key === 'dispose') {
+                return dispose
+              }
+              return Reflect.get(target, key)
+            },
+          })
+          dispose?.()
+          dispose = cb(lastEntry) || null
         } else {
           dispose?.()
         }
@@ -36,10 +41,21 @@ export const useOnIntersecting = (
       }
     )
 
+    const ro = new ResizeObserver(
+      debounce(() => {
+        if (!lastEntry) {
+          return
+        }
+        dispose = cb(lastEntry, true) || null
+      }, 150)
+    )
+
+    ro.observe(document.body)
     io.observe(node)
 
     return () => {
       dispose?.()
+      ro.disconnect()
       io.disconnect()
     }
   }, [ref.current])
