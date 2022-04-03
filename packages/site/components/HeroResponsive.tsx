@@ -77,7 +77,7 @@ export const HeroResponsive = memo(() => {
 
   return (
     <YStack y={0} my="$-12" py="$12" pos="relative">
-      <ContainerLarge mb={-11} pos="relative">
+      <ContainerLarge mb={-26} pos="relative">
         <Header />
 
         <Spacer size="$8" />
