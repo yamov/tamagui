@@ -8,14 +8,14 @@ export const HeroTypography = () => {
   return (
     <YStack pos="relative">
       <YStack ov="hidden">
-        <ContainerLarge h={700} ov="hidden" position="relative">
+        <ContainerLarge h={750} ov="hidden" position="relative">
           <YStack ai="center" space="$2">
             <HomeH2>Typography</HomeH2>
             <HomeH3>Plug and play fonts with ease.</HomeH3>
           </YStack>
 
           <YStack pos="relative">
-            <YStack pe="none" fullscreen bottom={-300} bc="$background" opacity={0.2} zi={1} />
+            <YStack pe="none" fullscreen bottom={-300} bc="$background" opacity={0.4} zi={1} />
             <YStack pos="relative" scale={1.7} y={70} x={250}>
               <XStack mb={100} p="$6" space $sm={{ flexDirection: 'column' }}>
                 <YStack
@@ -97,7 +97,7 @@ const OverlayCard = () => {
 
   // {/* TODO elevation not overriding? */}
   return (
-    <Card br="$6" bc={`$${tint}2`} elevation="$4">
+    <Card br="$6" elevation="$4">
       <YStack jc="center" p="$6" space="$6" mw={400}>
         <Paragraph ta="left" fontSize="$8" lineHeight="$7">
           Font themes should understand the needs of vertical rythym.

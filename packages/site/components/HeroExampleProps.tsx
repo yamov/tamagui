@@ -8,7 +8,7 @@ const FeatureItem = ({ label, children }) => {
   return (
     <Paragraph>
       <Text fow="800">{label}</Text>&nbsp;&nbsp;—&nbsp;&nbsp;
-      <Paragraph theme="alt3">{children}</Paragraph>
+      <Paragraph theme="alt2">{children}</Paragraph>
     </Paragraph>
   )
 }
