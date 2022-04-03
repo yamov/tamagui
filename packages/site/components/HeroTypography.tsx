@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Button, Card, H1, H2, H3, H4, H5, H6, Paragraph, Separator, XStack, YStack } from 'tamagui'
 
 import { useTint } from './ColorToggleButton'
@@ -8,15 +9,15 @@ export const HeroTypography = () => {
   return (
     <YStack pos="relative">
       <YStack ov="hidden">
-        <ContainerLarge h={750} ov="hidden" position="relative">
-          <YStack ai="center" space="$2">
-            <HomeH2>Typography</HomeH2>
+        <ContainerLarge h={750} ov="hidden" position="relative" space>
+          <YStack ai="center" space="$1">
+            <HomeH2>Better Typography</HomeH2>
             <HomeH3>Plug-and-play fonts with ease.</HomeH3>
           </YStack>
 
-          <YStack pos="relative">
-            <YStack pe="none" fullscreen bottom={-300} bc="$background" opacity={0.4} zi={1} />
-            <YStack pos="relative" scale={1.7} y={70} x={250}>
+          <YStack pos="relative" ov="hidden">
+            <YStack pe="none" fullscreen bc="$background" opacity={0.4} zi={1} />
+            <YStack pos="relative" scale={1.7} y={70} x={250} mb={70}>
               <XStack mb={100} p="$6" space $sm={{ flexDirection: 'column' }}>
                 <YStack
                   ai="flex-end"
@@ -53,7 +54,7 @@ export const HeroTypography = () => {
               <YStack
                 mt={-300}
                 x={-50}
-                mb={100}
+                mb={150}
                 ai="flex-start"
                 p="$6"
                 mw="50%"
@@ -100,16 +101,19 @@ const OverlayCard = () => {
     <Card br="$6" elevation="$4">
       <YStack jc="center" p="$6" space="$6" mw={400}>
         <Paragraph ta="left" fontSize="$8" lineHeight="$7">
-          Font themes should understand the needs of vertical rythym.
+          Typed fonts with independent vertical rythym and fully customizable styles per-size.
         </Paragraph>
 
-        <Paragraph ta="left" size="$5" theme="alt1">
-          Tamagui font tokens overcome limitations of existing design systems. By theming each font
-          family independently, across every font style prop, it enables shareable, easy to swap
-          font bundles.
+        <Paragraph ta="left" size="$5" theme="alt2">
+          Each font family can be fully styled independently with unique styles per-size. This
+          unlocks a fully shareable, and easy to swap and customize font system.
         </Paragraph>
 
-        <Button theme={tint}>Learn more</Button>
+        <Link href="/docs/intro/configuration" passHref>
+          <Button tag="a" als="flex-end" theme={tint}>
+            Learn more &raquo;
+          </Button>
+        </Link>
       </YStack>
     </Card>
   )
