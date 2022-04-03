@@ -42,7 +42,7 @@ export const HeroResponsive = memo(() => {
       <ContainerLarge>
         <Header />
 
-        <Spacer size="$6" />
+        <Spacer size="$8" />
         <div ref={ref} />
 
         <XStack f={1} space>
@@ -81,7 +81,7 @@ export const HeroResponsive = memo(() => {
 
       <YStack pos="absolute" zi={-1} t="50%" l={0} r={0} b={0} ai="center" jc="center">
         <YStack pos="absolute" top={-100} right={0}>
-          <Glow backgroundColor="red" />
+          <Glow />
         </YStack>
         <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid" />
       </YStack>
@@ -93,7 +93,7 @@ const Header = memo(() => {
   return (
     <XStack f={1} ov="hidden">
       <XStack $sm={{ display: 'none' }}>
-        <IconStack theme="purple_alt2" p="$4">
+        <IconStack theme="green_alt2" p="$4">
           <Monitor />
         </IconStack>
         <Spacer size="$6" />

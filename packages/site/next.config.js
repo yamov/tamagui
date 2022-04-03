@@ -2,7 +2,7 @@ const { withTamagui } = require('@tamagui/next-plugin')
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('next-fonts')
 const withVideos = require('next-videos')
-const withOptimizedImages = require('next-optimized-images')
+// const withOptimizedImages = require('next-optimized-images')
 const withBundleAnalyzer = require('@next/bundle-analyzer')
 
 Error.stackTraceLimit = Infinity
@@ -15,7 +15,7 @@ const transform = withPlugins(
     withBundleAnalyzer({
       enabled: process.env.ANALYZE === 'true',
     }),
-    withOptimizedImages,
+    // withOptimizedImages,
     withVideos,
     withFonts,
     withTamagui({

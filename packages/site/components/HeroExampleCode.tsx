@@ -35,7 +35,7 @@ export function HeroExampleCode() {
         </YStack>
 
         <YStack pos="absolute" zi={-1} top={100}>
-          <Glow />
+          <Glow bc="$red10" />
         </YStack>
 
         <InteractiveContainer maxWidth="100%" als="center">
