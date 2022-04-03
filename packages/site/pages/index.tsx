@@ -31,7 +31,7 @@ export default function Home() {
           <YStack py="$7" pb="$10">
             <HeroBelow />
           </YStack>
-          <ContainerLarge>
+          <ContainerLarge zi={100}>
             <XStack mb="$-4" jc="center" ai="center">
               <ThemeTint>
                 <InstallInput />
@@ -71,7 +71,7 @@ export default function Home() {
 
 const Section = ({ children, below }: any) => {
   return (
-    <YStack pos="relative" ov="hidden" py="$11" zi={below ? 0 : 1}>
+    <YStack contain="paint" pos="relative" ov="hidden" py="$12" zi={below ? 0 : 1}>
       {children}
     </YStack>
   )
@@ -82,10 +82,11 @@ const SectionTinted = ({ children, gradient, ...props }: any) => {
   const childrenMemo = useMemo(() => children, [children])
   const className = gradient ? `gradient-${tint}` : ''
   return (
-    <YStack pos="relative" py="$11" {...props}>
+    <YStack contain="paint" pos="relative" py="$12" {...props}>
       <YStack
         fullscreen
         className={className}
+        // o={0.85}
         zi={-1}
         // @ts-ignore
         bc={`$${tint}1`}

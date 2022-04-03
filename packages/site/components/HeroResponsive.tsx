@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
 import throttle from 'lodash.throttle'
-import Link from 'next/link'
 import { memo, useEffect, useRef, useState } from 'react'
 import { Button, Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
@@ -44,7 +43,7 @@ export const HeroResponsive = memo(() => {
       const right = bounding.width + bounding.x
       const x = e.pageX - right
       // console.log('wut is', { x, right, px: e.pageX, bw: bounding.width, bx: bounding.x })
-      const move = Math.min(500, Math.max(0, x))
+      const move = Math.min(600, Math.max(0, x))
       const next = move + (prevMove || 0)
       const width = bounding.width + x
       setMove(next)
@@ -73,13 +72,12 @@ export const HeroResponsive = memo(() => {
   }, [])
 
   const width = `calc(500px + ${move}px)`
-  console.log('width', width)
   const isSmall = 500 + move < 680
   const { tint } = useTint()
 
   return (
-    <YStack y={0} my="$-11" py="$11" pos="relative">
-      <ContainerLarge mb={-10} pos="relative">
+    <YStack y={0} my="$-12" py="$12" pos="relative">
+      <ContainerLarge mb={-11} pos="relative">
         <Header />
 
         <Spacer size="$8" />
@@ -116,7 +114,7 @@ export const HeroResponsive = memo(() => {
           </YStack>
         </XStack>
 
-        <YStack pos="absolute" zi={0} t="38%" l={-1000} r={-1000} b={-75} ai="center" jc="center">
+        <YStack pos="absolute" zi={0} t={220} l={-1000} r={-1000} b={-75} ai="center" jc="center">
           <XStack pos="absolute" t={0} l={0} r={0} bbw={1} boc="$color" opacity={0.2} />
 
           <YStack f={1} h="100%" w="100%" className="bg-grid">
@@ -156,22 +154,22 @@ const Header = memo(() => {
   return (
     <XStack f={1}>
       <XStack $sm={{ display: 'none' }}>
-        <IconStack theme="green_alt2" p="$4">
-          <Monitor />
+        <IconStack mt={-10} theme="green_alt2" p="$4">
+          <Monitor size={20} />
         </IconStack>
         <Spacer size="$6" />
       </XStack>
 
       <YStack f={1} space="$2">
         <HomeH2 als="flex-start">Responsive, done right</HomeH2>
-        <Paragraph maxWidth={590} size="$5" theme="alt2">
+        <Paragraph maxWidth={500} size="$5" theme="alt2">
           Sharing responsive designs between web and native saves time, but responive hooks are slow
           to write, and slow to run.
         </Paragraph>
 
-        <Paragraph maxWidth={590} size="$5" theme="alt2">
-          Tamagui's easy inline styles and hooks compile away to efficient CSS media queries or
-          unrolled StyleSheet.create on native.
+        <Paragraph maxWidth={500} size="$5" theme="alt2">
+          Tamagui's inline styles and hooks compile away to efficient CSS media queries or
+          StyleSheet.create on native.
         </Paragraph>
       </YStack>
     </XStack>
