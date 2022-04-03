@@ -8,4 +8,5 @@ export const Glow = styled(Circle, {
   scaleX: 1.5,
   scaleY: 1.8,
   o: 0.075,
+  pe: 'none',
 })

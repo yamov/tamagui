@@ -76,8 +76,8 @@ export const HeroResponsive = memo(() => {
   const isSmall = 500 + move < 680
 
   return (
-    <YStack className="unselectable" y={0} my="$-11" py="$11" pos="relative">
-      <ContainerLarge pos="relative">
+    <YStack y={0} my="$-11" py="$11" pos="relative">
+      <ContainerLarge mb={-10} pos="relative">
         <Header />
 
         <Spacer size="$8" />
@@ -136,11 +136,13 @@ export const HeroResponsive = memo(() => {
 
 const Marker = ({ name, active, ...props }: any) => {
   return (
-    <Theme name={active ? 'blue' : null}>
+    <Theme className="unselectable" name={active ? 'blue' : null}>
       <YStack pos="absolute" l={800} {...props}>
         <XStack y={-80} ai="flex-start" space>
           <YStack w={1} h={80} bc="$colorHover" opacity={active ? 0.5 : 0.2} />
-          <Button size="$3">{name}</Button>
+          <Button borderWidth={1} size="$3">
+            {name}
+          </Button>
         </XStack>
       </YStack>
     </Theme>
@@ -158,7 +160,7 @@ const Header = memo(() => {
       </XStack>
 
       <YStack f={1} space="$2">
-        <HomeH2 als="flex-start">Responsive done right</HomeH2>
+        <HomeH2 als="flex-start">Responsive, done right</HomeH2>
         <Paragraph maxWidth={590} size="$5" theme="alt2">
           Sharing responsive code between web and native{' '}
           <Link href="/blog/we-need-better-media-queries">is a holy grail</Link>, but doing so with
@@ -166,8 +168,8 @@ const Header = memo(() => {
         </Paragraph>
 
         <Paragraph maxWidth={590} size="$5" theme="alt2">
-          Tamagui has nice inline syntax (+ hooks) that compile to CSS media queries
-          (StyleSheet.create on native). It's faster to write, and faster to run.
+          Tamagui's responsive styles (and hooks) compile to efficient CSS media queries (or
+          StyleSheet.create on native). It's faster to write and run.
         </Paragraph>
       </YStack>
     </XStack>
@@ -179,24 +181,17 @@ const height = 400
 const Safari = memo(({ isSmall }: { isSmall: boolean }) => {
   return (
     <YStack
+      className="unselectable"
       bc="$background"
       f={1}
       ov="hidden"
       elevation="$4"
-      br="$3"
+      br="$4"
       boc="$borderColor"
       borderWidth={1}
       w="100%"
     >
-      <YStack
-        px="$4"
-        jc="center"
-        btrr="$2"
-        btlr="$2"
-        borderBottomWidth={0}
-        h={50}
-        bc="$backgroundHover"
-      >
+      <YStack px="$4" jc="center" borderBottomWidth={0} h={50} bc="$backgroundHover">
         <XStack pos="relative" ai="center" space="$4">
           <XStack space="$2">
             <Circle bc="$red10" size={10} />
@@ -206,8 +201,8 @@ const Safari = memo(({ isSmall }: { isSmall: boolean }) => {
 
           {!isSmall && (
             <XStack space="$1">
-              <ChevronLeft size={20} color="var(--colorPress)" />
-              <ChevronRight size={20} color="var(--colorPress)" />
+              <ChevronLeft size={20} color="var(--color)" opacity={0.25} />
+              <ChevronRight size={20} color="var(--color)" opacity={0.25} />
             </XStack>
           )}
 
@@ -217,7 +212,7 @@ const Safari = memo(({ isSmall }: { isSmall: boolean }) => {
             <XStack
               h={30}
               f={2}
-              br="$1"
+              br="$2"
               borderWidth={1}
               boc="$borderColor"
               bc="$backgroundPress"

@@ -56,7 +56,7 @@ export default function Home() {
           <Section>
             <HeroTypography />
           </Section>
-          <SectionTinted>
+          <SectionTinted gradient>
             <HeroExampleProps />
           </SectionTinted>
           <Section>

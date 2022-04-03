@@ -1,3 +1,5 @@
+- fix lineargradient
+
 - o="hidden" works when it should throw type warning
 - slow types
 
