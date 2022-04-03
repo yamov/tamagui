@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
 import throttle from 'lodash.throttle'
 import { memo, useRef, useState } from 'react'
-import { Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
+import { Button, Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
 import favicon from '../public/favicon.svg'
 import { ContainerLarge } from './Container'
@@ -35,7 +35,8 @@ export const HeroResponsive = memo(() => {
     }
   })
 
-  const width = `calc(400px + ${move}px)`
+  const width = `calc(500px + ${move}px)`
+  const isSmall = 500 + move < 680
 
   return (
     <YStack overflow="hidden" y={0} my="$-10" py="$10" pos="relative">
@@ -54,7 +55,7 @@ export const HeroResponsive = memo(() => {
             f={1}
             ref={safariRef}
           >
-            <Safari />
+            <Safari isSmall={isSmall} />
           </YStack>
 
           <YStack
@@ -79,15 +80,38 @@ export const HeroResponsive = memo(() => {
         </XStack>
       </ContainerLarge>
 
-      <YStack pos="absolute" zi={-1} t="50%" l={0} r={0} b={0} ai="center" jc="center">
+      <YStack pos="absolute" zi={-1} t="38%" l={0} r={0} b={0} ai="center" jc="center">
         <YStack pos="absolute" top={-100} right={0}>
           <Glow />
         </YStack>
-        <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid" />
+
+        <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid">
+          <ContainerLarge>
+            <XStack>
+              <XStack pos="absolute" t={0} l={0} r={0} bbw={1} boc="$color" opacity={0.2} />
+              <Marker name="sm" l={800} />
+              <Marker name="md" l={960} />
+              <Marker name="lg" l={1120} />
+            </XStack>
+          </ContainerLarge>
+        </YStack>
       </YStack>
     </YStack>
   )
 })
+
+const Marker = ({ name, ...props }: any) => {
+  return (
+    <YStack pos="absolute" l={800} {...props}>
+      <XStack y={-80} ai="flex-start" space>
+        <YStack w={1} h={80} bc="$color" opacity={0.2} />
+        <Button size="$3" theme="alt2">
+          {name}
+        </Button>
+      </XStack>
+    </YStack>
+  )
+}
 
 const Header = memo(() => {
   return (
@@ -117,13 +141,13 @@ const Header = memo(() => {
 
 const height = 400
 
-const Safari = memo(() => {
+const Safari = memo(({ isSmall }: { isSmall: boolean }) => {
   return (
     <YStack
       bc="$background"
       f={1}
       ov="hidden"
-      elevation="$1"
+      elevation="$4"
       br="$3"
       boc="$borderColor"
       borderWidth={1}
@@ -145,10 +169,12 @@ const Safari = memo(() => {
             <Circle bc="$green10" size={10} />
           </XStack>
 
-          <XStack space="$1">
-            <ChevronLeft size={20} color="var(--colorPress)" />
-            <ChevronRight size={20} color="var(--colorPress)" />
-          </XStack>
+          {!isSmall && (
+            <XStack space="$1">
+              <ChevronLeft size={20} color="var(--colorPress)" />
+              <ChevronRight size={20} color="var(--colorPress)" />
+            </XStack>
+          )}
 
           <XStack fullscreen ai="center">
             <XStack f={1} />
@@ -201,14 +227,14 @@ const Tab = memo(({ active, children, ...props }: any) => {
         bc="$backgroundHover"
         ov="hidden"
         f={1}
-        py="$1"
+        py="$0.5"
         px="$2"
         ai="center"
         {...props}
       >
         <Image width={16} height={16} src={favicon} />
         <Spacer size="$2" />
-        <Paragraph cursor="default" size="$3" ellipse>
+        <Paragraph cursor="default" size="$2" ellipse>
           {children}
         </Paragraph>
       </XStack>

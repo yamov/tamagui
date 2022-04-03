@@ -146,45 +146,6 @@ export function HeroExampleThemes() {
     setSelTheme(userTheme as any)
   }, [userTheme])
 
-  const scrollContents = useMemo(() => {
-    return themeCombos.map((name, i) => {
-      // const isCurActive = curIndex === i
-      // const isNextActive = nextIndex === i
-      // const isActive = isMidTransition ? isNextActive : isCurActive
-      // const isBeforeActive = i < curIndex
-      // const isActiveGroup = colorI === curColorI
-      const [colorI, shadeI] = flatToSplit(i)
-      const [color, alt] = name.split('_')
-      return (
-        <XStack key={i} width={width}>
-          <XStack
-            // zi={(isActive ? 1000 : isBeforeActive ? i : 1000 - i) + (isActiveGroup ? 1000 : 0)}
-            // pos="absolute"
-            // x={
-            //   i * offset + 0 // (isActiveGroup ? (isBeforeActive ? -1 : 0) * 20 * i : 0)
-            //   // (!isTransitioning && isActiveGroup ? offsetActive * shadeI : 0)
-            // }
-            // scale={isTransitioning ? 0.6 : 1 + (isActiveGroup ? -0.1 : -0.5) + (isActive ? 0.1 : 0)}
-            // mx={-scale * 180}
-            scale={scale}
-            cursor="pointer"
-            className="transition-test"
-            hoverStyle={{
-              scale: scale + 0.025,
-            }}
-            onPress={() => {
-              updateActiveI([colorI, shadeI])
-            }}
-          >
-            <Theme name={color as any}>
-              <MediaPlayer pointerEvents="none" alt={alt ? +alt.replace('alt', '') : 0} />
-            </Theme>
-          </XStack>
-        </XStack>
-      )
-    })
-  }, [])
-
   return (
     <YStack>
       {useMemo(() => {
@@ -192,7 +153,7 @@ export function HeroExampleThemes() {
           <ContainerLarge space="$3" position="relative">
             <YStack zi={1} space="$1">
               <HomeH2>Flexible, fast themes</HomeH2>
-              <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
+              <HomeH3>Unlimited sub-themes, down to the component.</HomeH3>
             </YStack>
           </ContainerLarge>
         )
@@ -260,9 +221,6 @@ export function HeroExampleThemes() {
         >
           <XStack
             className="scroll-horizontal no-scrollbar"
-            // @ts-ignore
-            // style={{ width: '100%', overflow: 'hidden', overflowX: 'auto' }}
-            // @ts-ignore
             ref={scrollView}
             onScroll={(e: any) => {
               if (scrollLock === 'animate' || scrollLock === 'shouldAnimate') {
@@ -286,7 +244,47 @@ export function HeroExampleThemes() {
               px={`calc(50vw + 30px)`}
               x={-45 - 30}
             >
-              {scrollContents}
+              {useMemo(() => {
+                return themeCombos.map((name, i) => {
+                  // const isCurActive = curIndex === i
+                  // const isNextActive = nextIndex === i
+                  // const isActive = isMidTransition ? isNextActive : isCurActive
+                  // const isBeforeActive = i < curIndex
+                  // const isActiveGroup = colorI === curColorI
+                  const [colorI, shadeI] = flatToSplit(i)
+                  const [color, alt] = name.split('_')
+                  return (
+                    <XStack key={i} width={width}>
+                      <XStack
+                        // zi={(isActive ? 1000 : isBeforeActive ? i : 1000 - i) + (isActiveGroup ? 1000 : 0)}
+                        // pos="absolute"
+                        // x={
+                        //   i * offset + 0 // (isActiveGroup ? (isBeforeActive ? -1 : 0) * 20 * i : 0)
+                        //   // (!isTransitioning && isActiveGroup ? offsetActive * shadeI : 0)
+                        // }
+                        // scale={isTransitioning ? 0.6 : 1 + (isActiveGroup ? -0.1 : -0.5) + (isActive ? 0.1 : 0)}
+                        // mx={-scale * 180}
+                        scale={scale}
+                        cursor="pointer"
+                        className="transition-test"
+                        hoverStyle={{
+                          scale: scale + 0.025,
+                        }}
+                        onPress={() => {
+                          updateActiveI([colorI, shadeI])
+                        }}
+                      >
+                        <Theme name={color as any}>
+                          <MediaPlayer
+                            pointerEvents="none"
+                            alt={alt ? +alt.replace('alt', '') : 0}
+                          />
+                        </Theme>
+                      </XStack>
+                    </XStack>
+                  )
+                })
+              }, [])}
             </XStack>
           </XStack>
 
