@@ -315,7 +315,7 @@ iframe {
 }
 
 .token.comment {
-  color: var(--color4);
+  color: var(--colorTranslucent);
 }
 
 .token.atapply .token:not(.rule):not(.important) {
