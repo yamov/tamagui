@@ -162,7 +162,7 @@ export function HeroExampleThemes() {
       <YStack mt="$3" ai="center" jc="center" space="$2">
         <XStack className="scroll-horizontal no-scrollbar">
           <XStack px="$4" space="$4">
-            <InteractiveContainer bc="$backgroundHover" p="$1" br="$10" als="center" space="$1">
+            <InteractiveContainer p="$1" br="$10" als="center" space="$1">
               {['light', 'dark'].map((name, i) => {
                 const selected = i === 0 ? 'light' : 'dark'
                 const isActive = theme === selected
@@ -174,7 +174,7 @@ export function HeroExampleThemes() {
               })}
             </InteractiveContainer>
 
-            <InteractiveContainer bc="$backgroundHover" p="$1" br="$10" als="center" space="$1">
+            <InteractiveContainer p="$1" br="$10" als="center" space="$1">
               {themes[0].map((color, i) => {
                 const isActive = curColorI === i
                 return (
@@ -189,7 +189,7 @@ export function HeroExampleThemes() {
               })}
             </InteractiveContainer>
 
-            <InteractiveContainer bc="$backgroundHover" p="$1" br="$10" als="center">
+            <InteractiveContainer p="$1" br="$10" als="center">
               <Theme name={colorName}>
                 <XStack space="$1">
                   {themes[1].map((name, i) => {

@@ -46,8 +46,7 @@ export const interFont = createFont({
 })
 
 export const monoFont = createFont({
-  family:
-    '"Fira Code VF", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  family: 'Fira Code, Monaco, Consolas, Ubuntu Mono, monospace;',
   size: {
     1: 10,
     2: 11,

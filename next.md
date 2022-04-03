@@ -1,3 +1,8 @@
+- document theme-base
+  - adding /inter.css /fira-code.css
+  - adding font-feature-settings
+  - customizing things
+
 - fix lineargradient
 
 - o="hidden" works when it should throw type warning

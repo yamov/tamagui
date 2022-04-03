@@ -34,11 +34,11 @@ export default function ResponsiveDemo() {
   return (
     <>
       <TitleAndMetaTags title="Tamagui — Responsive Demo" />
-      <YStack p="$4">
-        <YStack pos="relative" $gtSm={{ display: 'none' }}>
+      <YStack mh="100vh" ov="hidden" p="$4">
+        <YStack pos="relative" $gtXs={{ display: 'none' }}>
           {coverPhoto}
         </YStack>
-        <YStack space="$6" $sm={{ display: 'none' }}>
+        <YStack space="$6" $xs={{ display: 'none' }}>
           <XStack space>
             <YStack mw={500}>{coverPhoto}</YStack>
             <Image y={0} br="$6" width={200} height={200} src={img2.src} />
@@ -62,9 +62,9 @@ export default function ResponsiveDemo() {
 
           <Paragraph theme="alt1" size="$4">
             A lovely, private and very clean cottage with all amenities for a comfortable and
-            peaceful stay. Quiet, and cool the year around, we are a 20 minute walk from the Hawaii
-            Tropical Botanical Garden and well situated for touring to Waipio Valley, Akaka Falls,
-            Volcano National Park, and many other destinations in the area
+            peaceful stay. We are a 20 minute walk from the Hawaii Tropical Botanical Garden and
+            well situated for touring to Akaka Falls, Volcano National Park, and many other
+            destinations.
           </Paragraph>
         </YStack>
       </YStack>

@@ -6,6 +6,7 @@ import { Button, Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 
 
 import { useGet } from '../hooks/useGet'
 import favicon from '../public/favicon.svg'
+import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
 import { Glow } from './Glow'
 import { HomeH2 } from './HomeH2'
@@ -14,7 +15,7 @@ import { useOnIntersecting } from './useOnIntersecting'
 
 let bounding: DOMRect | null = null
 let prevMove = 0
-const breakpoints = [700, 860, 1020]
+const breakpoints = [660, 800, 1020]
 
 export const HeroResponsive = memo(() => {
   const [isDragging, setIsDragging] = useState(false)
@@ -74,6 +75,7 @@ export const HeroResponsive = memo(() => {
   const width = `calc(500px + ${move}px)`
   console.log('width', width)
   const isSmall = 500 + move < 680
+  const { tint } = useTint()
 
   return (
     <YStack y={0} my="$-11" py="$11" pos="relative">
@@ -91,6 +93,7 @@ export const HeroResponsive = memo(() => {
             mw={width}
             f={1}
             ref={safariRef}
+            theme={tint}
           >
             <Safari isSmall={isSmall} />
           </YStack>
@@ -122,9 +125,9 @@ export const HeroResponsive = memo(() => {
                 <Glow />
               </YStack>
               <XStack>
-                <Marker active={sizeI > 0} name="sm" l={breakpoints[0]} />
-                <Marker active={sizeI > 1} name="md" l={breakpoints[1]} />
-                <Marker active={sizeI > 2} name="lg" l={breakpoints[2]} />
+                <Marker active={sizeI > 0} name="xs" l={breakpoints[0]} />
+                <Marker active={sizeI > 1} name="sm" l={breakpoints[1]} />
+                <Marker active={sizeI > 2} name="md" l={breakpoints[2]} />
               </XStack>
             </ContainerLarge>
           </YStack>
@@ -134,7 +137,7 @@ export const HeroResponsive = memo(() => {
   )
 })
 
-const Marker = ({ name, active, ...props }: any) => {
+const Marker = memo(({ name, active, ...props }: any) => {
   return (
     <Theme className="unselectable" name={active ? 'blue' : null}>
       <YStack pos="absolute" l={800} {...props}>
@@ -147,7 +150,7 @@ const Marker = ({ name, active, ...props }: any) => {
       </YStack>
     </Theme>
   )
-}
+})
 
 const Header = memo(() => {
   return (
@@ -162,21 +165,20 @@ const Header = memo(() => {
       <YStack f={1} space="$2">
         <HomeH2 als="flex-start">Responsive, done right</HomeH2>
         <Paragraph maxWidth={590} size="$5" theme="alt2">
-          Sharing responsive code between web and native{' '}
-          <Link href="/blog/we-need-better-media-queries">is a holy grail</Link>, but doing so with
-          hooks is slow to write, and slow to run.
+          Sharing responsive designs between web and native saves time, but responive hooks are slow
+          to write, and slow to run.
         </Paragraph>
 
         <Paragraph maxWidth={590} size="$5" theme="alt2">
-          Tamagui's responsive styles (and hooks) compile to efficient CSS media queries (or
-          StyleSheet.create on native). It's faster to write and run.
+          Tamagui's easy inline styles and hooks compile away to efficient CSS media queries or
+          unrolled StyleSheet.create on native.
         </Paragraph>
       </YStack>
     </XStack>
   )
 })
 
-const height = 400
+const height = 455
 
 const Safari = memo(({ isSmall }: { isSmall: boolean }) => {
   return (
