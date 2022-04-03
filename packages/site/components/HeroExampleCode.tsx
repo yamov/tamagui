@@ -28,7 +28,7 @@ export function HeroExampleCode() {
 
   return (
     <ContainerLarge position="relative">
-      <YStack pos="absolute" zi={-1} top={100}>
+      <YStack pos="absolute" zi={-1} top={-100} left={-200} rotate="-85deg">
         <Glow bc="$pink10" />
       </YStack>
 

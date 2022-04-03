@@ -118,11 +118,12 @@ export function HeroExampleAnimations() {
 
         <XStack
           bw={1}
-          boc="$borderColor"
+          boc={`$${tint}5`}
+          borderStyle="dashed"
           w="100%"
           br="$6"
           ov="hidden"
-          bc="$background"
+          // bc="$background"
           h={305}
           mw={880}
           als="center"
@@ -168,7 +169,7 @@ export function HeroExampleAnimations() {
 
           <Separator vertical />
 
-          <YStack $sm={{ display: 'none' }} width="40%">
+          <YStack blw={1} boc="$background" $sm={{ display: 'none' }} width="40%">
             <ScrollView>
               {animationDescriptions.map((item, i) => {
                 const isActive = item === animation

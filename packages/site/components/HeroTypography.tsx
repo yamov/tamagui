@@ -8,8 +8,8 @@ import { HomeH2, HomeH3 } from './HomeH2'
 export const HeroTypography = () => {
   return (
     <YStack pos="relative">
-      <YStack ov="hidden">
-        <ContainerLarge h={750} ov="hidden" position="relative" space>
+      <YStack>
+        <ContainerLarge h={750} position="relative" space>
           <YStack ai="center" space="$1">
             <HomeH2>Better Typography</HomeH2>
             <HomeH3>Plug-and-play fonts with ease.</HomeH3>

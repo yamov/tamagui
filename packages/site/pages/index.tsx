@@ -73,7 +73,7 @@ export default function Home() {
 
 const Section = ({ children, below }: any) => {
   return (
-    <YStack pos="relative" ov="hidden" py="$10" zi={below ? 0 : 1}>
+    <YStack pos="relative" ov="hidden" py="$11" zi={below ? 0 : 1}>
       {children}
     </YStack>
   )
@@ -83,7 +83,7 @@ const SectionTinted = ({ children, gradient, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack pos="relative" py="$10" {...props}>
+    <YStack pos="relative" py="$11" {...props}>
       <YStack
         fullscreen
         className={gradient ? `gradient-${tint}` : ''}

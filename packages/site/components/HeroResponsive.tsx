@@ -76,7 +76,7 @@ export const HeroResponsive = memo(() => {
   const isSmall = 500 + move < 680
 
   return (
-    <YStack className="unselectable" overflow="hidden" y={0} my="$-10" py="$10" pos="relative">
+    <YStack className="unselectable" y={0} my="$-11" py="$11" pos="relative">
       <ContainerLarge pos="relative">
         <Header />
 
@@ -149,7 +149,7 @@ const Marker = ({ name, active, ...props }: any) => {
 
 const Header = memo(() => {
   return (
-    <XStack f={1} ov="hidden">
+    <XStack f={1}>
       <XStack $sm={{ display: 'none' }}>
         <IconStack theme="green_alt2" p="$4">
           <Monitor />
@@ -157,7 +157,7 @@ const Header = memo(() => {
         <Spacer size="$6" />
       </XStack>
 
-      <YStack f={1} mt={-10} space="$2">
+      <YStack f={1} space="$2">
         <HomeH2 als="flex-start">Responsive done right</HomeH2>
         <Paragraph maxWidth={590} size="$5" theme="alt2">
           Sharing responsive code between web and native{' '}
