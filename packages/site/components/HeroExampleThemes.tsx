@@ -1,10 +1,10 @@
 import { useTheme } from '@components/NextTheme'
 import Link from 'next/link'
 import { SetStateAction, memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { ScrollView } from 'react-native'
 import {
   Button,
   InteractiveContainer,
+  Paragraph,
   Theme,
   ThemeName,
   XStack,
@@ -19,6 +19,7 @@ import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
 import { HomeH2, HomeH3 } from './HomeH2'
 import { MediaPlayer } from './MediaPlayer'
+import { useOnIntersecting } from './useOnIntersecting'
 
 const themes: (ThemeName | null)[][] = [
   ['orange', 'red', 'pink', null, 'green', 'teal', 'blue'],
@@ -111,12 +112,7 @@ export function HeroExampleThemes() {
   }, [])
 
   // arrow keys
-  useEffect(() => {
-    const node = scrollView.current
-    if (!node) return
-    // only when carousel is fully in viewport
-    let dispose: Function | null = null
-
+  useOnIntersecting(scrollView, ({ isIntersecting, dispose }) => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
         move(1)
@@ -125,41 +121,26 @@ export function HeroExampleThemes() {
         move(-1)
       }
     }
-
-    const io = new IntersectionObserver(
-      ([{ isIntersecting }]) => {
-        if (isIntersecting) {
-          if (!hasScrolledOnce) {
-            // scroll to middle on first intersection
-            hasScrolledOnce = true
-            // dont rush
-            setTimeout(() => {
-              const index = themeCombos.indexOf('')
-              moveToIndex(index)
-              setScrollLock('shouldAnimate')
-              scrollToIndex(index, true)
-            }, 400)
-          }
-          window.addEventListener('keydown', onKey)
-          dispose = () => {
-            window.removeEventListener('keydown', onKey)
-          }
-        } else {
-          dispose?.()
-        }
-      },
-      {
-        threshold: 1,
+    if (isIntersecting) {
+      if (!hasScrolledOnce) {
+        // scroll to middle on first intersection
+        hasScrolledOnce = true
+        // dont rush
+        setTimeout(() => {
+          const index = themeCombos.indexOf('')
+          moveToIndex(index)
+          setScrollLock('shouldAnimate')
+          scrollToIndex(index, true)
+        }, 400)
       }
-    )
-
-    io.observe(node)
-
-    return () => {
+      window.addEventListener('keydown', onKey)
+      return () => {
+        window.removeEventListener('keydown', onKey)
+      }
+    } else {
       dispose?.()
-      io.disconnect()
     }
-  }, [scrollView.current])
+  })
 
   useEffect(() => {
     setSelTheme(userTheme as any)
@@ -210,7 +191,7 @@ export function HeroExampleThemes() {
         return (
           <ContainerLarge space="$3" position="relative">
             <YStack zi={1} space="$1">
-              <HomeH2>Truly flexible themes</HomeH2>
+              <HomeH2>Flexible, fast themes</HomeH2>
               <HomeH3>Unlimited sub-themes, down to the component</HomeH3>
             </YStack>
           </ContainerLarge>
@@ -271,7 +252,7 @@ export function HeroExampleThemes() {
 
         <YStack
           mt={-20}
-          py="$7"
+          py="$8"
           ov="hidden"
           w="100%"
           pos="relative"
@@ -316,15 +297,15 @@ export function HeroExampleThemes() {
           </YStack>
         </YStack>
 
-        <Theme name={colorName}>
-          {/* <CodeInline my="$2" br="$3" size="$5"> */}
-          {/* causing ssr issues */}
-          {/* {theme} */}
-          {/* {colorName ? `_${colorName}` : ''} */}
-          {/* {altName ? `_${altName}` : ''} */}
-          {/* {hoverSectionName ? `_${hoverSectionName}` : ''} */}
-          {/* </CodeInline> */}
-        </Theme>
+        {/* <Theme name={colorName}>
+          <CodeInline my="$2" br="$3" size="$5">
+          causing ssr issues
+          {theme}
+          {colorName ? `_${colorName}` : ''}
+          {altName ? `_${altName}` : ''}
+          {hoverSectionName ? `_${hoverSectionName}` : ''}
+          </CodeInline>
+        </Theme> */}
       </YStack>
 
       <Bottom />
@@ -336,13 +317,19 @@ const Bottom = memo(() => {
   const { tint } = useTint()
 
   return (
-    <ContainerLarge space="$3" position="relative">
-      <YStack ai="center" als="center" maxWidth={480} space="$2">
-        <Link href="/docs/intro/themes" passHref>
-          <Button theme={tint} tag="a">
-            How themes work &raquo;
-          </Button>
-        </Link>
+    <ContainerLarge position="relative">
+      <YStack ai="center" als="center" jc="center" mw={580} space="$4">
+        <Paragraph ta="center" size="$6">
+          Tamagui themes are fully typed based on your custom tokens and&nbsp;compile into clean
+          atomic CSS, avoiding deep-tree re-rendering.
+        </Paragraph>
+        <XStack>
+          <Link href="/docs/intro/themes" passHref>
+            <Button theme={tint} tag="a">
+              How themes work &raquo;
+            </Button>
+          </Link>
+        </XStack>
       </YStack>
     </ContainerLarge>
   )

@@ -1,41 +1,65 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
-import { memo, useEffect, useState } from 'react'
-import { Circle, Image, Paragraph, Spacer, Theme, VisuallyHidden, XStack, YStack } from 'tamagui'
+import throttle from 'lodash.throttle'
+import { memo, useEffect, useRef, useState } from 'react'
+import { Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
 import favicon from '../public/favicon.svg'
 import { ContainerLarge } from './Container'
 import { HomeH2 } from './HomeH2'
 import { IconStack } from './IconStack'
+import { useOnIntersecting } from './useOnIntersecting'
 
 export const HeroResponsive = memo(() => {
   const [isDragging, setIsDragging] = useState(false)
-  const [width, setWidth] = useState(70)
+  const [move, setMove] = useState(0)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const safariRef = useRef<HTMLElement | null>(null)
 
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      console.log(e.pageX)
+  useOnIntersecting(ref, ({ isIntersecting, dispose }) => {
+    if (isIntersecting) {
+      const node = safariRef.current
+      if (!node) return
+      const left = node.offsetWidth + node.offsetLeft
+      const onMove = throttle((e: MouseEvent) => {
+        if (!isDragging) return
+        const move = Math.min(500, Math.max(0, e.pageX - left))
+        setMove(move)
+      }, 16)
+      window.addEventListener('mousemove', onMove)
+      return () => {
+        window.removeEventListener('mousemove', onMove)
+      }
+    } else {
+      dispose?.()
     }
-    window.addEventListener('mousemove', onMove)
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-    }
-  }, [])
+  })
+
+  const width = `calc(400px + ${move}px)`
 
   return (
-    <ContainerLarge>
-      <YStack>
+    <YStack my="$-9" py="$9" pos="relative">
+      <ContainerLarge>
         <Header />
 
         <Spacer size="$6" />
+        <div ref={ref} />
 
-        <XStack f={1} w={`${width}%`} space>
-          <Safari />
+        <XStack f={1} space>
+          <YStack
+            className="unselectable"
+            pe={isDragging ? 'none' : 'auto'}
+            w={width}
+            mw={width}
+            f={1}
+            ref={safariRef}
+          >
+            <Safari />
+          </YStack>
 
           <YStack
             jc="center"
-            f={1}
             cursor="ew-resize"
-            onPress={() => {
+            onPressIn={() => {
               setIsDragging(true)
             }}
             onPressOut={() => {
@@ -52,8 +76,12 @@ export const HeroResponsive = memo(() => {
             />
           </YStack>
         </XStack>
+      </ContainerLarge>
+
+      <YStack pos="absolute" zi={-1} t="50%" l={0} r={0} b={0} ai="center" jc="center">
+        <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid" />
       </YStack>
-    </ContainerLarge>
+    </YStack>
   )
 })
 
@@ -68,16 +96,15 @@ const Header = memo(() => {
       </XStack>
 
       <YStack f={1} mt={-10} space="$2">
-        <HomeH2 als="flex-start">Responsive, everywhere</HomeH2>
+        <HomeH2 als="flex-start">Responsive done right</HomeH2>
         <Paragraph maxWidth={580} size="$5" theme="alt2">
-          React Native Web apps resize slowly as every component runs expensive JS on the main
-          thread.
+          Responsive hooks resize slowly - every component runs expensive JS on the main thread on
+          every frame.
         </Paragraph>
 
         <Paragraph maxWidth={580} size="$5" theme="alt2">
-          Tamagui compiles inline responsive styles into CSS Media Queries on the web, or hoists to
-          StyleSheet.create on native for dramatically easier, faster, and lighter responsive
-          styling.
+          Tamagui compiles inline responsive styles and hooks into CSS Media Queries on the web, and
+          hoists to StyleSheet.create on native.
         </Paragraph>
       </YStack>
     </XStack>
@@ -88,7 +115,16 @@ const height = 400
 
 const Safari = memo(() => {
   return (
-    <YStack f={1} ov="hidden" elevation="$1" br="$3" boc="$borderColor" borderWidth={1}>
+    <YStack
+      bc="$background"
+      f={1}
+      ov="hidden"
+      elevation="$1"
+      br="$3"
+      boc="$borderColor"
+      borderWidth={1}
+      w="100%"
+    >
       <YStack
         px="$4"
         jc="center"

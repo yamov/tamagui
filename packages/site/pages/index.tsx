@@ -25,34 +25,42 @@ export default function Home() {
       <TitleAndMetaTags title="Tamagui — React Native + Web UI kit" />
       <HeaderFloating />
       <YStack>
-        <YStack space="$6">
+        <YStack>
           <Hero />
           <ContainerLarge>
-            <XStack mt="$2" jc="center" ai="center">
+            <XStack mt="$8" mb="$-4" jc="center" ai="center">
               <ThemeTint>
                 <InstallInput />
               </ThemeTint>
             </XStack>
           </ContainerLarge>
-          <TintedYStack>
+          <SectionTinted>
             <HeroExampleThemes />
-          </TintedYStack>
-          <HeroResponsive />
-          <TintedYStack>
+          </SectionTinted>
+          <Section>
+            <HeroResponsive />
+          </Section>
+          <SectionTinted>
             <HeroPerformance />
-          </TintedYStack>
-          <HeroExampleCode />
-          <TintedYStack>
+          </SectionTinted>
+          <Section>
+            <HeroExampleCode />
+          </Section>
+          <SectionTinted>
             <HeroExampleAnimations />
-          </TintedYStack>
-          <HeroTypography />
-          <TintedYStack>
+          </SectionTinted>
+          <Section>
+            <HeroTypography />
+          </Section>
+          <SectionTinted>
             <HeroExampleProps />
-          </TintedYStack>
-          <FeaturesGrid />
-          <Spacer />
+          </SectionTinted>
+          <Section>
+            <FeaturesGrid />
+          </Section>
+          <Spacer size="$10" />
           <PageSeparator />
-          <Spacer />
+          <Spacer size="$10" />
           <Community />
         </YStack>
       </YStack>
@@ -60,11 +68,15 @@ export default function Home() {
   )
 }
 
-const TintedYStack = ({ children, ...props }: any) => {
+const Section = ({ children }) => {
+  return <YStack py="$9">{children}</YStack>
+}
+
+const SectionTinted = ({ children, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack pos="relative" py="$9" my="$6" {...props}>
+    <YStack pos="relative" py="$9" {...props}>
       <YStack
         fullscreen
         zi={-1}

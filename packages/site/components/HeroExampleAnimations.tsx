@@ -22,6 +22,7 @@ import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
 import { HomeH2, HomeH3 } from './HomeH2'
 import { LogoIcon } from './TamaguiLogo'
+import { useOnIntersecting } from './useOnIntersecting'
 
 const positions = [
   {
@@ -80,12 +81,7 @@ export function HeroExampleAnimations() {
 
   const settings = Object.entries(animation.settings)
 
-  useEffect(() => {
-    const node = container.current
-    if (!node) return
-    // only when carousel is fully in viewport
-    let dispose: Function | null = null
-
+  useOnIntersecting(container, ({ isIntersecting, dispose }) => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
         next()
@@ -95,36 +91,22 @@ export function HeroExampleAnimations() {
       }
     }
 
-    const io = new IntersectionObserver(
-      ([{ isIntersecting }]) => {
-        if (isIntersecting) {
-          if (!hasScrolledOnce) {
-            hasScrolledOnce = true
-            // dont rush
-            setTimeout(() => {
-              next()
-            }, 400)
-          }
-          window.addEventListener('keydown', onKey)
-          dispose = () => {
-            window.removeEventListener('keydown', onKey)
-          }
-        } else {
-          dispose?.()
-        }
-      },
-      {
-        threshold: 1,
+    if (isIntersecting) {
+      if (!hasScrolledOnce) {
+        hasScrolledOnce = true
+        // dont rush
+        setTimeout(() => {
+          next()
+        }, 400)
       }
-    )
-
-    io.observe(node)
-
-    return () => {
+      window.addEventListener('keydown', onKey)
+      return () => {
+        window.removeEventListener('keydown', onKey)
+      }
+    } else {
       dispose?.()
-      io.disconnect()
     }
-  }, [container.current])
+  })
 
   return (
     <YStack>

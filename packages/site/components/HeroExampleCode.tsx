@@ -183,7 +183,7 @@ export default createTamagui({
 
     output: {
       description:
-        'the compiler optimizes inline styles to atomic CSS and flattens trees to HTML tags extra speed.',
+        'the compiler optimizes inline styles to atomic CSS and flattens components to HTML tags.',
       examples: [
         {
           name: 'app.js',
