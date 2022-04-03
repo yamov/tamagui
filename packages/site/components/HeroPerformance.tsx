@@ -32,7 +32,7 @@ export function HeroPerformance() {
           />
         </YStack>
 
-        <Paragraph theme="alt3" size="$3">
+        <Paragraph mt={-20} theme="alt3" size="$3">
           Lower is better. As of February 2022.
         </Paragraph>
 

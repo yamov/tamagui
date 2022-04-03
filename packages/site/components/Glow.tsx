@@ -4,8 +4,8 @@ export const Glow = styled(Circle, {
   className: 'glow',
   rotate: '20deg',
   bc: '$green10',
-  size: 500,
-  scaleX: 1,
+  size: 600,
+  scaleX: 1.25,
   scaleY: 1.8,
-  o: 0.15,
+  o: 0.11,
 })

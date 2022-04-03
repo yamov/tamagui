@@ -27,7 +27,7 @@ export default function Home() {
       <HeaderFloating />
       <YStack>
         <YStack>
-          <Hero />
+          {/* <Hero />
           <YStack py="$7" pb="$10">
             <HeroBelow />
           </YStack>
@@ -40,8 +40,8 @@ export default function Home() {
           </ContainerLarge>
           <SectionTinted gradient>
             <HeroExampleThemes />
-          </SectionTinted>
-          <Section>
+          </SectionTinted> */}
+          <Section below>
             <HeroResponsive />
           </Section>
           <SectionTinted>
@@ -71,9 +71,9 @@ export default function Home() {
   )
 }
 
-const Section = ({ children }) => {
+const Section = ({ children, below }: any) => {
   return (
-    <YStack ov="hidden" py="$10">
+    <YStack pos="relative" ov="hidden" py="$10" zi={below ? 0 : 1}>
       {children}
     </YStack>
   )
@@ -88,9 +88,11 @@ const SectionTinted = ({ children, gradient, ...props }: any) => {
         fullscreen
         className={gradient ? `gradient-${tint}` : ''}
         zi={-1}
+        // @ts-ignore
         bc={`$${tint}1`}
         btw={1}
         bbw={1}
+        // @ts-ignore
         boc={`$${tint}4`}
       />
       {childrenMemo}

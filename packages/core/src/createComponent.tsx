@@ -429,7 +429,7 @@ export function createComponent<ComponentPropTypes extends Object = DefaultProps
                 onPressIn?.(e)
                 onMouseDown?.(e)
               }
-            : (onPressIn as any),
+            : null,
           onClick: attachPress
             ? (e) => {
                 // this caused issue with next.js passing href
@@ -439,7 +439,7 @@ export function createComponent<ComponentPropTypes extends Object = DefaultProps
                 unPress()
                 onPressOut?.(e)
               }
-            : (onPressOut as any),
+            : null,
         }
       : null
 

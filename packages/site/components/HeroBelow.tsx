@@ -18,27 +18,22 @@ export const HeroBelow = memo(() => {
         $sm={{ flexDirection: 'column' }}
       >
         <YStack width="33%" $sm={{ width: 'auto', maxWidth: 500, mx: 'auto' }} flexShrink={1}>
-          <Theme name="purple_alt2">
-            <IconStack>
-              <Cpu size={18} color="var(--colorHover)" />
-            </IconStack>
-          </Theme>
-          {/* TODO why weight is removed */}
+          <IconStack theme="purple_alt2">
+            <Cpu size={18} color="var(--colorHover)" />
+          </IconStack>
           <H3 fontWeight="700" size="$6" mb="$2">
             Performant
           </H3>
           <Paragraph size="$3" theme="alt2">
-            The fastest UI kit thanks to an advanced compiler that handles styles, media queries,
+            The fastest UI kit - thanks to an advanced compiler that handles styles, media queries,
             CSS variables, and tree&nbsp;flattening.
           </Paragraph>
         </YStack>
 
         <YStack width="33%" $sm={{ width: 'auto', maxWidth: 500, mx: 'auto' }} flexShrink={1}>
-          <Theme name="green_alt2">
-            <IconStack>
-              <Compass size={18} color="var(--colorHover)" />
-            </IconStack>
-          </Theme>
+          <IconStack theme="green_alt2">
+            <Compass size={18} color="var(--colorHover)" />
+          </IconStack>
           <H3 fontWeight="700" size="$6" mb="$2">
             Easy to adopt
           </H3>
@@ -53,11 +48,9 @@ export const HeroBelow = memo(() => {
         </YStack>
 
         <YStack width="33%" $sm={{ width: 'auto', maxWidth: 500, mx: 'auto' }} flexShrink={1}>
-          <Theme name="pink_alt2">
-            <IconStack>
-              <Layers size={18} color="var(--colorHover)" />
-            </IconStack>
-          </Theme>
+          <IconStack theme="pink_alt2">
+            <Layers size={18} color="var(--colorHover)" />
+          </IconStack>
           <H3 fontWeight="700" size="$6" mb="$2">
             Productive
           </H3>

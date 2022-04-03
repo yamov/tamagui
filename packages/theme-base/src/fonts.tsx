@@ -14,8 +14,8 @@ export const interFont = createFont({
     8: 24,
     9: 34,
     10: 48,
-    11: 62,
-    12: 76,
+    11: 58,
+    12: 68,
   },
   lineHeight: {
     1: 15,

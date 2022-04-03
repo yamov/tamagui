@@ -28,14 +28,14 @@ export function HeroExampleCode() {
 
   return (
     <ContainerLarge position="relative">
+      <YStack pos="absolute" zi={-1} top={100}>
+        <Glow bc="$pink10" />
+      </YStack>
+
       <YStack zi={1} space="$4">
         <YStack space="$1">
           <HomeH2>DX, meet UX</HomeH2>
-          <HomeH3>Faster runtime 🤝 less code 🤝 more platforms.</HomeH3>
-        </YStack>
-
-        <YStack pos="absolute" zi={-1} top={100}>
-          <Glow bc="$red10" />
+          <HomeH3>Runs faster 🤝 less code 🤝 every platform.</HomeH3>
         </YStack>
 
         <InteractiveContainer maxWidth="100%" als="center">

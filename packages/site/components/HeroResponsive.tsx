@@ -1,8 +1,10 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
 import throttle from 'lodash.throttle'
-import { memo, useRef, useState } from 'react'
+import Link from 'next/link'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Button, Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
+import { useGet } from '../hooks/useGet'
 import favicon from '../public/favicon.svg'
 import { ContainerLarge } from './Container'
 import { Glow } from './Glow'
@@ -15,6 +17,7 @@ export const HeroResponsive = memo(() => {
   const [move, setMove] = useState(0)
   const ref = useRef<HTMLDivElement | null>(null)
   const safariRef = useRef<HTMLElement | null>(null)
+  const getIsDragging = useGet(isDragging)
 
   useOnIntersecting(ref, ({ isIntersecting, dispose }) => {
     if (isIntersecting) {
@@ -22,7 +25,7 @@ export const HeroResponsive = memo(() => {
       if (!node) return
       const left = node.offsetWidth + node.offsetLeft
       const onMove = throttle((e: MouseEvent) => {
-        if (!isDragging) return
+        if (!getIsDragging()) return
         const move = Math.min(500, Math.max(0, e.pageX - left))
         setMove(move)
       }, 16)
@@ -35,18 +38,29 @@ export const HeroResponsive = memo(() => {
     }
   })
 
+  useEffect(() => {
+    const handler = (_e: MouseEvent) => {
+      console.log('mouse up')
+      setIsDragging(false)
+    }
+    window.addEventListener('mouseup', handler)
+    return () => {
+      window.removeEventListener('mouseup', handler)
+    }
+  }, [])
+
   const width = `calc(500px + ${move}px)`
   const isSmall = 500 + move < 680
 
   return (
-    <YStack overflow="hidden" y={0} my="$-10" py="$10" pos="relative">
-      <ContainerLarge>
+    <YStack className="unselectable" overflow="hidden" y={0} my="$-10" py="$10" pos="relative">
+      <ContainerLarge pos="relative">
         <Header />
 
         <Spacer size="$8" />
         <div ref={ref} />
 
-        <XStack f={1} space>
+        <XStack zi={1} f={1} space>
           <YStack
             className="unselectable"
             pe={isDragging ? 'none' : 'auto'}
@@ -64,9 +78,6 @@ export const HeroResponsive = memo(() => {
             onPressIn={() => {
               setIsDragging(true)
             }}
-            onPressOut={() => {
-              setIsDragging(false)
-            }}
           >
             <YStack
               bc="$color"
@@ -78,24 +89,25 @@ export const HeroResponsive = memo(() => {
             />
           </YStack>
         </XStack>
+
+        <YStack pos="absolute" zi={0} t="38%" l={-1000} r={-1000} b={-75} ai="center" jc="center">
+          <XStack pos="absolute" t={0} l={0} r={0} bbw={1} boc="$color" opacity={0.2} />
+
+          <YStack pos="absolute" top={-100} right={0}>
+            <Glow />
+          </YStack>
+
+          <YStack f={1} h="100%" w="100%" className="bg-grid">
+            <ContainerLarge pos="relative">
+              <XStack>
+                <Marker name="sm" l={700} />
+                <Marker name="md" l={860} />
+                <Marker name="lg" l={1020} />
+              </XStack>
+            </ContainerLarge>
+          </YStack>
+        </YStack>
       </ContainerLarge>
-
-      <YStack pos="absolute" zi={-1} t="38%" l={0} r={0} b={0} ai="center" jc="center">
-        <YStack pos="absolute" top={-100} right={0}>
-          <Glow />
-        </YStack>
-
-        <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid">
-          <ContainerLarge>
-            <XStack>
-              <XStack pos="absolute" t={0} l={0} r={0} bbw={1} boc="$color" opacity={0.2} />
-              <Marker name="sm" l={800} />
-              <Marker name="md" l={960} />
-              <Marker name="lg" l={1120} />
-            </XStack>
-          </ContainerLarge>
-        </YStack>
-      </YStack>
     </YStack>
   )
 })
@@ -125,14 +137,15 @@ const Header = memo(() => {
 
       <YStack f={1} mt={-10} space="$2">
         <HomeH2 als="flex-start">Responsive done right</HomeH2>
-        <Paragraph maxWidth={580} size="$5" theme="alt2">
-          Responsive hooks resize slowly - every component runs expensive JS on the main thread on
-          every frame.
+        <Paragraph maxWidth={590} size="$5" theme="alt2">
+          Sharing responsive code between web and native{' '}
+          <Link href="/blog/we-need-better-media-queries">is a holy grail</Link>, but doing so with
+          hooks is slow to write, and slow to run.
         </Paragraph>
 
-        <Paragraph maxWidth={580} size="$5" theme="alt2">
-          Tamagui compiles inline responsive styles and hooks into CSS Media Queries on the web, and
-          hoists to StyleSheet.create on native.
+        <Paragraph maxWidth={590} size="$5" theme="alt2">
+          Tamagui has nice inline syntax (+ hooks) that compile to CSS media queries
+          (StyleSheet.create on native). It's faster to write, and faster to run.
         </Paragraph>
       </YStack>
     </XStack>
@@ -244,7 +257,7 @@ const Tab = memo(({ active, children, ...props }: any) => {
 
 const BrowserPane = memo(() => {
   return (
-    <YStack>
+    <YStack pe="none">
       <iframe width="100%" height={height} src="/responsive-demo" />
     </YStack>
   )

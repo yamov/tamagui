@@ -67,13 +67,11 @@ const HeroTop = memo(() => {
             <Title
               size="$9"
               $gtSm={{
-                size: '$10',
+                size: '$11',
                 ta: 'center',
-                maxWidth: 700,
-                mx: '$8',
               }}
               $gtMd={{
-                size: '$11',
+                size: '$12',
                 maxWidth: 900,
                 mx: '$4',
               }}
@@ -81,7 +79,7 @@ const HeroTop = memo(() => {
               <Tooltip contents="Works the same on iOS, Android, and web">
                 <span className="rainbow clip-text help">Universal</span>
               </Tooltip>{' '}
-              design systems for React Native&nbsp;&&nbsp;Web, faster.
+              design systems for React&nbsp;Native&nbsp;&&nbsp;Web, faster.
             </Title>
 
             <YStack
@@ -114,7 +112,7 @@ const HeroTop = memo(() => {
                 }}
               >
                 An optimizing compiler and UI kit that let you write less code.
-                Write&nbsp;once,&nbsp;run&nbsp;everywhere, perform better.
+                Write&nbsp;once,&nbsp;run&nbsp;everywhere that performs better.
               </Paragraph>
             </YStack>
           </YStack>
