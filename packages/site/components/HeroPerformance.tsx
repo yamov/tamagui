@@ -12,8 +12,8 @@ export function HeroPerformance() {
         <YStack ai="center" space="$2">
           <HomeH2>Unmatched Performance</HomeH2>
           <Paragraph maxWidth={580} ta="center" size="$6" theme="alt2">
-            Tamagui makes all styles - even inline styles - faster than any other UI kit, thanks to
-            an advanced, multi-stage optimizing compiler.
+            All styles - even inline styles - run faster than any other UI kit, thanks to an
+            advanced, multi-stage optimizing compiler.
           </Paragraph>
         </YStack>
 

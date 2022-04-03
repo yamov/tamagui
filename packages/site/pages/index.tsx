@@ -3,7 +3,7 @@ import { FeaturesGrid } from '@components/FeaturesGrid'
 import { Hero } from '@components/Hero'
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags'
 import { useMemo } from 'react'
-import { Theme, ThemeReset, XStack, YStack } from 'tamagui'
+import { Spacer, Theme, ThemeReset, XStack, YStack } from 'tamagui'
 
 import { useTint } from '../components/ColorToggleButton'
 import { ContainerLarge } from '../components/Container'
@@ -50,9 +50,10 @@ export default function Home() {
             <HeroExampleProps />
           </TintedYStack>
           <FeaturesGrid />
-          <TintedYStack>
-            <Community />
-          </TintedYStack>
+          <Spacer />
+          <PageSeparator />
+          <Spacer />
+          <Community />
         </YStack>
       </YStack>
     </>
@@ -63,7 +64,7 @@ const TintedYStack = ({ children, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack pos="relative" py="$8" my="$6" {...props}>
+    <YStack pos="relative" py="$9" my="$6" {...props}>
       <YStack
         fullscreen
         zi={-1}

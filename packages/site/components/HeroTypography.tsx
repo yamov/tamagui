@@ -104,9 +104,9 @@ const OverlayCard = () => {
         </Paragraph>
 
         <Paragraph ta="left" size="$5" theme="alt1">
-          Tamagui font tokens overcome limitations of existing design systems. Theming each font
-          family independently, across every font style prop, opens up an ecosystem of font
-          packages.
+          Tamagui font tokens overcome limitations of existing design systems. By theming each font
+          family independently, across every font style prop, it enables shareable, easy to swap
+          font bundles.
         </Paragraph>
 
         <Button theme={tint}>Learn more</Button>
