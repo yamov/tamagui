@@ -17,6 +17,7 @@ import { CodeInline } from './Code'
 import { CodeDemo } from './CodeDemo'
 import { useTint } from './ColorToggleButton'
 import { ContainerLarge } from './Container'
+import { Glow } from './Glow'
 import { HomeH2, HomeH3 } from './HomeH2'
 import { IconStack } from './IconStack'
 
@@ -31,6 +32,10 @@ export function HeroExampleCode() {
         <YStack space="$1">
           <HomeH2>DX, meet UX</HomeH2>
           <HomeH3>Faster runtime 🤝 less code 🤝 more platforms.</HomeH3>
+        </YStack>
+
+        <YStack pos="absolute" zi={-1} top={100}>
+          <Glow />
         </YStack>
 
         <InteractiveContainer maxWidth="100%" als="center">

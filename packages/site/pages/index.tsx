@@ -8,6 +8,7 @@ import { Spacer, Theme, ThemeReset, XStack, YStack } from 'tamagui'
 import { useTint } from '../components/ColorToggleButton'
 import { ContainerLarge } from '../components/Container'
 import { HeaderFloating } from '../components/HeaderFloating'
+import { HeroBelow } from '../components/HeroBelow'
 import { HeroExampleAnimations } from '../components/HeroExampleAnimations'
 import { HeroExampleCode } from '../components/HeroExampleCode'
 import { HeroExampleProps } from '../components/HeroExampleProps'
@@ -27,8 +28,11 @@ export default function Home() {
       <YStack>
         <YStack>
           <Hero />
+          <YStack py="$7" pb="$10">
+            <HeroBelow />
+          </YStack>
           <ContainerLarge>
-            <XStack mt="$8" mb="$-4" jc="center" ai="center">
+            <XStack mb="$-4" jc="center" ai="center">
               <ThemeTint>
                 <InstallInput />
               </ThemeTint>
@@ -58,7 +62,6 @@ export default function Home() {
           <Section>
             <FeaturesGrid />
           </Section>
-          <Spacer size="$10" />
           <PageSeparator />
           <Spacer size="$10" />
           <Community />
@@ -69,14 +72,18 @@ export default function Home() {
 }
 
 const Section = ({ children }) => {
-  return <YStack py="$9">{children}</YStack>
+  return (
+    <YStack ov="hidden" py="$10">
+      {children}
+    </YStack>
+  )
 }
 
 const SectionTinted = ({ children, ...props }: any) => {
   const { tint } = useTint()
   const childrenMemo = useMemo(() => children, [children])
   return (
-    <YStack pos="relative" py="$9" {...props}>
+    <YStack pos="relative" py="$10" {...props}>
       <YStack
         fullscreen
         zi={-1}

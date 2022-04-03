@@ -319,7 +319,7 @@ const Bottom = memo(() => {
   return (
     <ContainerLarge position="relative">
       <YStack ai="center" als="center" jc="center" mw={580} space="$4">
-        <Paragraph ta="center" size="$6">
+        <Paragraph theme="alt1" ta="center" size="$6">
           Tamagui themes are fully typed based on your custom tokens and&nbsp;compile into clean
           atomic CSS, avoiding deep-tree re-rendering.
         </Paragraph>

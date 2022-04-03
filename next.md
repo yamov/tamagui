@@ -1,3 +1,6 @@
+- o="hidden" works when it should throw type warning
+- slow types
+
 - // TODO media queries on styled()
 
 - ScrollView isnt SSR compat

@@ -1,10 +1,11 @@
 import { ChevronLeft, ChevronRight, Lock, Monitor } from '@tamagui/feather-icons'
 import throttle from 'lodash.throttle'
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 import { Circle, Image, Paragraph, Spacer, Theme, XStack, YStack } from 'tamagui'
 
 import favicon from '../public/favicon.svg'
 import { ContainerLarge } from './Container'
+import { Glow } from './Glow'
 import { HomeH2 } from './HomeH2'
 import { IconStack } from './IconStack'
 import { useOnIntersecting } from './useOnIntersecting'
@@ -37,7 +38,7 @@ export const HeroResponsive = memo(() => {
   const width = `calc(400px + ${move}px)`
 
   return (
-    <YStack my="$-9" py="$9" pos="relative">
+    <YStack overflow="hidden" y={0} my="$-10" py="$10" pos="relative">
       <ContainerLarge>
         <Header />
 
@@ -79,6 +80,9 @@ export const HeroResponsive = memo(() => {
       </ContainerLarge>
 
       <YStack pos="absolute" zi={-1} t="50%" l={0} r={0} b={0} ai="center" jc="center">
+        <YStack pos="absolute" top={-100} right={0}>
+          <Glow backgroundColor="red" />
+        </YStack>
         <YStack zi={-1} f={1} h="100%" w="100%" className="bg-grid" />
       </YStack>
     </YStack>
